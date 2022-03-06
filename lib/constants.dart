@@ -204,7 +204,10 @@ final host = PortfolioHost(
     'https://github.com/code-bross',
     'https://www.linkedin.com/in/%EC%98%81%EA%B8%B8-%EA%B0%95-833621187',
     'assets/resume/resume.pdf',
-    '');
+    '',
+    'Mobile client developer \n(android, flutter)',
+    '새로운 아이디어를 도출해내고 실현하는 것을 좋아하며,\n주어진일을 빠르고 효율적으로 처리하는 것을 목표로 합니다.\n현재는 개발자로서 더 성장할 수 있는 방법을 고민 중이며,\n일을 효율적으로 하는 방법, 더 나은 방향으로 커뮤니케이션하는 방법 등에 관심이 많습니다.'
+);
 
 class PortfolioHost {
   final String name;
@@ -216,6 +219,8 @@ class PortfolioHost {
   final String linkedInUrl;
   final String resumePath;
   final String resumeUrl;
+  final String aboutMeTitle;
+  final String aboutMeDescription;
 
   const PortfolioHost(
       this.name,
@@ -226,7 +231,9 @@ class PortfolioHost {
       this.githubUrl,
       this.linkedInUrl,
       this.resumePath,
-      this.resumeUrl);
+      this.resumeUrl,
+      this.aboutMeTitle,
+      this.aboutMeDescription);
 }
 
 var serviceSections = [
@@ -247,8 +254,13 @@ var serviceSections = [
       ''),
   ServiceSectionModel(
       'Tools',
-      'Tools\n- Jira\n- Github\n- Gitlab\n- GoogleWorkspace\n- Firebase',
+      'Tools\n- Jira\n- Github\n- Gitlab\n- GoogleWorkspace\n- Firebase\n- Slack',
       'assets/services/rapid.png',
+      ''),
+  ServiceSectionModel(
+      'WorkStyle',
+      'WorkStyle\n- Agile\n- Sprint\n- Kanban\n- CodeReview\n- New Technology\n- Peer2Peer',
+      'assets/services/work.png',
       '')
 ];
 
