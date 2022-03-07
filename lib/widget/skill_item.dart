@@ -7,7 +7,7 @@ import '../provider/themeProvider.dart';
 List<Widget> skillWidgets(ThemeProvider themeProvider) {
   return skills
       .map(
-        (skill) => Container(
+        (skill) => Flexible(child:  Container(
           margin: EdgeInsets.only(bottom: 15.0),
           child: Row(
             children: [
@@ -50,7 +50,7 @@ List<Widget> skillWidgets(ThemeProvider themeProvider) {
               )
             ],
           ),
-        ),
+        )),
       )
       .toList();
 }

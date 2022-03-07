@@ -23,13 +23,13 @@ class _SkillDesktopState extends State<SkillDesktop> {
         children: [
           CustomSectionHeading(text: "\nSkills"),
           SizedBox(
-            height: height * 0.035,
-          ),
-          SizedBox(
             height: width > 1200 ? height * 0.65 : width * 0.39,
-            child: Column(
-              children: skillWidgets(_themeProvider),
-            ),
+            child: Container(
+                margin: EdgeInsets.fromLTRB(
+                    width * 0.1, height * 0.2, width * 0.1, 0),
+                child: Column(
+                  children: skillWidgets(_themeProvider),
+                )),
           ),
         ],
       ),
