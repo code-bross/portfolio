@@ -4,6 +4,7 @@ import 'package:folio/sections/portfolio/portfolioMobile.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Portfolio extends StatelessWidget {
+  Portfolio(GlobalKey key) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(

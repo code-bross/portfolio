@@ -1,10 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:folio/provider/themeProvider.dart';
-import 'package:native_pdf_view/native_pdf_view.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:flutter/gestures.dart';
@@ -21,9 +18,24 @@ import 'package:folio/widget/arrowOnTop.dart';
 import 'package:folio/widget/footer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'skills/skills.dart';
+
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
+}
+
+extension GlobalKeyExtension on GlobalKey {
+  Rect get globalPaintBounds {
+    final renderObject = currentContext?.findRenderObject();
+    final translation = renderObject?.getTransformTo(null)?.getTranslation();
+    if (translation != null && renderObject?.paintBounds != null) {
+      final offset = Offset(translation.x, translation.y);
+      return renderObject?.paintBounds?.shift(offset);
+    } else {
+      return null;
+    }
+  }
 }
 
 class _MainPageState extends State<MainPage> {
@@ -35,14 +47,25 @@ class _MainPageState extends State<MainPage> {
   final List<String> _sectionsName = [
     "HOME",
     "ABOUT",
-    "SERVICES",
+    "SKILLS",
+    "DEVELOPMENT",
     "PROJECTS",
     "CONTACT"
+  ];
+
+  final List<GlobalKey> _keys = [
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
   ];
 
   final List<IconData> _sectionsIcons = [
     Icons.home,
     Icons.person,
+    Icons.computer,
     Icons.settings,
     Icons.build,
     Icons.article,
@@ -50,36 +73,55 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void _scroll(int i) {
+    double width = MediaQuery.of(context).size.width;
+    var isMobile = (width < 1200);
+
+    var height = 0.0;
+    switch (i) {
+      case 0: //home
+        height = 0.0;
+        break;
+      case 1: //about
+        height = MediaQuery.of(context).size.height * 1.05;
+        break;
+      case 2: // skills
+        height = MediaQuery.of(context).size.height * (isMobile ? 1.95 : 1.98);
+        break;
+      case 3: //development
+        height = MediaQuery.of(context).size.height * (isMobile ? 3.1 : 2.5);
+        break;
+      case 4: //project
+        height = MediaQuery.of(context).size.height * 3.56;
+        break;
+      case 5: //contact
+        height = MediaQuery.of(context).size.height * (isMobile ? 4.1 : 4.6);
+        break;
+    }
     _scrollController.animateTo(
-      i == 0
-          ? 0.0
-          : i == 1
-              ? MediaQuery.of(context).size.height * 1.05
-              : i == 2
-                  ? MediaQuery.of(context).size.height * 1.98
-                  : i == 3
-                      ? MediaQuery.of(context).size.height * 2.9
-                      : MediaQuery.of(context).size.height * 4,
+      height,
       duration: Duration(seconds: 1),
       curve: Curves.easeInOut,
     );
   }
 
   Widget sectionWidget(int i) {
-    if (i == 0) {
-      return HomePage();
-    } else if (i == 1) {
-      return About();
-    } else if (i == 2) {
-      return Services();
-    } else if (i == 3) {
-      return Portfolio();
-    } else if (i == 4) {
-      return Contact();
-    } else if (i == 5) {
-      return Footer();
-    } else {
-      return Container();
+    switch (i) {
+      case 0:
+        return HomePage(_keys[0]);
+      case 1:
+        return About(_keys[1]);
+      case 2:
+        return Skills(_keys[2]);
+      case 3:
+        return Services(_keys[3]);
+      case 4:
+        return Portfolio(_keys[4]);
+      case 5:
+        return Contact(_keys[5]);
+      case 6:
+        return Footer();
+      default:
+        return Container();
     }
   }
 
@@ -255,16 +297,17 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         const SizedBox(width: 15.0),
-        SizedBox(
-          height: 30.0,
-          child: Switch(
-            inactiveTrackColor: Colors.grey,
-            value: !_themeProv.lightTheme,
-            onChanged: (value) {
-              _themeProv.lightTheme = !value;
-            },
-            activeColor: kPrimaryColor,
-          ),
+        Flexible(
+          child: SizedBox(
+              height: 30.0,
+              child: Switch(
+                inactiveTrackColor: Colors.grey,
+                value: !_themeProv.lightTheme,
+                onChanged: (value) {
+                  _themeProv.lightTheme = !value;
+                },
+                activeColor: kPrimaryColor,
+              )),
         ),
         const SizedBox(width: 15.0),
       ],
@@ -318,7 +361,7 @@ class _MainPageState extends State<MainPage> {
                       borderRadius: BorderRadius.circular(5.0),
                       side: BorderSide(color: kPrimaryColor)),
                   onPressed: () {
-                      launchURL(context, host.resumePath);
+                    launchURL(context, host.resumePath);
                   },
                   child: ListTile(
                     leading: Icon(

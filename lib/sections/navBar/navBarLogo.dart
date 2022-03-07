@@ -6,7 +6,9 @@ import '../../constants.dart';
 
 class NavBarLogo extends StatelessWidget {
   final double height;
+
   NavBarLogo({this.height});
+
   @override
   Widget build(BuildContext context) {
     final _themeProvider = Provider.of<ThemeProvider>(context);
@@ -16,28 +18,31 @@ class NavBarLogo extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          Flexible(
+              child: Text(
             "< ",
             style: TextStyle(
               fontSize: height ?? 20,
               color: _themeProvider.lightTheme ? Colors.black : Colors.white,
             ),
-          ),
-          Text(
+          )),
+          Flexible(
+              child: Text(
             host.nickName,
             style: TextStyle(
               fontFamily: "Agustina",
               fontSize: height ?? 20,
               color: _themeProvider.lightTheme ? Colors.black : Colors.white,
             ),
-          ),
-          Text(
+          )),
+          Flexible(
+              child: Text(
             MediaQuery.of(context).size.width >= 1000 ? " />\t\t" : " />",
             style: TextStyle(
               fontSize: height ?? 20,
               color: _themeProvider.lightTheme ? Colors.black : Colors.white,
             ),
-          )
+          ))
         ],
       ),
     );
