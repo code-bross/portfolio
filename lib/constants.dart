@@ -322,3 +322,24 @@ class ProjectModel {
   const ProjectModel(this.title, this.subTitle, this.icon, this.link,
       this.backgroundImage, this.description, this.storeImages);
 }
+
+
+class SkillModel {
+  final String skill;
+  final int percentage;
+
+  SkillModel({
+    @required this.skill,
+    @required this.percentage,
+  });
+}
+
+List<SkillModel> skills = [
+  SkillModel(skill: 'Kotlin', percentage: 90),
+  SkillModel(skill: 'ReactiveX', percentage: 90),
+  SkillModel(skill: 'Testability', percentage: 80),
+  SkillModel(skill: 'Java', percentage: 70),
+  SkillModel(skill: 'Dart', percentage: 60),
+  SkillModel(skill: 'Swift', percentage: 50),
+  SkillModel(skill: 'JavaScript', percentage: 50)
+];
