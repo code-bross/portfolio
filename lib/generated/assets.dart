@@ -2,6 +2,14 @@
 class Assets {
   Assets._();
 
+  static const String alyacmAlyacm1 = 'assets/projects/alyacm/alyacm_1.png';
+  static const String alyacmAlyacm2 = 'assets/projects/alyacm/alyacm_2.png';
+  static const String alyacmAlyacm3 = 'assets/projects/alyacm/alyacm_3.png';
+  static const String alyacmAlyacm4 = 'assets/projects/alyacm/alyacm_4.png';
+  static const String alyacmAlyacm5 = 'assets/projects/alyacm/alyacm_5.png';
+  static const String alyacmAlyacm6 = 'assets/projects/alyacm/alyacm_6.png';
+  static const String alyacmAlyacm7 = 'assets/projects/alyacm/alyacm_7.png';
+  static const String alyacmAlyacm8 = 'assets/projects/alyacm/alyacm_8.png';
   static const String assets1 = 'assets/1.png';
   static const String assetsCui = 'assets/cui.png';
   static const String assetsDsc = 'assets/dsc.png';
@@ -14,6 +22,12 @@ class Assets {
   static const String assetsWeb = 'assets/web.png';
   static const String fontsAgustina = 'assets/fonts/agustina.otf';
   static const String fontsMontserrat = 'assets/fonts/montserrat.ttf';
+  static const String kasaBgKasa1 = 'assets/projects/kasa/bg_kasa_1.png';
+  static const String kasaBgKasa2 = 'assets/projects/kasa/bg_kasa_2.png';
+  static const String kasaBgKasa3 = 'assets/projects/kasa/bg_kasa_3.png';
+  static const String kasaBgKasa4 = 'assets/projects/kasa/bg_kasa_4.png';
+  static const String kasaBgKasa5 = 'assets/projects/kasa/bg_kasa_5.png';
+  static const String kasaBgKasa6 = 'assets/projects/kasa/bg_kasa_6.png';
   static const String projectsAndroid = 'assets/projects/android.png';
   static const String projectsBgAlyacm = 'assets/projects/bg_alyacm.png';
   static const String projectsBgKasa = 'assets/projects/bg_kasa.jpeg';
@@ -41,5 +55,6 @@ class Assets {
   static const String servicesOpenB = 'assets/services/open_b.png';
   static const String servicesRapid = 'assets/services/rapid.png';
   static const String servicesUi = 'assets/services/ui.png';
+  static const String servicesWork = 'assets/services/work.png';
 
 }

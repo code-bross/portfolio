@@ -8,11 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ServiceDetailsDesktop extends StatelessWidget {
-  final String serviceTitle;
-  final String details;
+  final ProjectModel projectModel;
 
-  const ServiceDetailsDesktop({Key key, this.details, this.serviceTitle})
-      : super(key: key);
+  const ServiceDetailsDesktop({Key key, this.projectModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +20,8 @@ class ServiceDetailsDesktop extends StatelessWidget {
       body: Row(
         children: [
           Expanded(
-              child: ServiceDetailsDescription(
-            serviceTitle: serviceTitle,
-            desc: details,
-          )),
-          Expanded(child: ServicesShowCase()),
+              child: ServiceDetailsDescription(projectModel: projectModel)),
+          Expanded(child: ServicesShowCase(projectModel: projectModel)),
         ],
       ),
     );
@@ -34,10 +29,9 @@ class ServiceDetailsDesktop extends StatelessWidget {
 }
 
 class ServiceDetailsDescription extends StatelessWidget {
-  final String serviceTitle;
-  final String desc;
+  final ProjectModel projectModel;
 
-  const ServiceDetailsDescription({Key key, this.desc, this.serviceTitle})
+  const ServiceDetailsDescription({Key key, this.projectModel})
       : super(key: key);
 
   @override
@@ -66,7 +60,7 @@ class ServiceDetailsDescription extends StatelessWidget {
               ),
               const SizedBox(width: 8.0),
               AdaptiveText(
-                serviceTitle,
+                projectModel.title,
                 style: GoogleFonts.montserrat(
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
@@ -78,31 +72,11 @@ class ServiceDetailsDescription extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 15.0),
-          serviceTitle == kServicesTitles[0]
-              ? Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.info,
-                      color: _themeProvider.lightTheme
-                          ? Colors.black
-                          : Colors.white,
-                    ),
-                    const SizedBox(width: 8.0),
-                    AdaptiveText(
-                      "I only work with mac",
-                      style: TextStyle(
-                          color: _themeProvider.lightTheme
-                              ? Colors.black
-                              : Colors.white),
-                    ),
-                  ],
-                )
-              : Container(),
+          Container(),
           const SizedBox(height: 15.0),
           Expanded(
               child: AdaptiveText(
-            desc,
+            projectModel.description,
             style: GoogleFonts.montserrat(
                 color: _themeProvider.lightTheme ? Colors.black : Colors.white,
                 fontSize: 20.0,
@@ -116,6 +90,10 @@ class ServiceDetailsDescription extends StatelessWidget {
 }
 
 class ServicesShowCase extends StatefulWidget {
+  final ProjectModel projectModel;
+
+  const ServicesShowCase({Key key, this.projectModel}) : super(key: key);
+
   @override
   _ServicesShowCaseState createState() => _ServicesShowCaseState();
 }
@@ -160,7 +138,7 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
           Row(
             children: [
               AdaptiveText(
-                " ${projects[_currentIndex].title} ",
+                " ${widget.projectModel.title}",
                 style: GoogleFonts.montserrat(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
@@ -172,8 +150,7 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
               Container(),
               Expanded(child: Container()),
               IconButton(
-                onPressed: () =>
-                    launchURL(context, projects[_currentIndex].link),
+                onPressed: () => launchURL(context, widget.projectModel.link),
                 icon: Icon(Icons.arrow_forward,
                     color: _themeProvider.lightTheme
                         ? Colors.black
@@ -203,8 +180,8 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
                   width: screenSize.width,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(
-                              projects[_currentIndex].backgroundImage),
+                          image:
+                              AssetImage(widget.projectModel.backgroundImage),
                           fit: BoxFit.cover)),
                   child: SizedBox(
                     height: screenSize.height * 0.55,
@@ -224,10 +201,10 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
                   child: Align(
                     alignment: Alignment.center,
                     child: CarouselSlider.builder(
-                      itemCount: projects.length,
+                      itemCount: widget.projectModel.storeImages.length,
                       carouselController: _carouselController,
                       itemBuilder: (context, index, i) => Image.asset(
-                        projects[index].icon,
+                        widget.projectModel.storeImages[index],
                         height: 300.0,
                       ),
                       options: CarouselOptions(

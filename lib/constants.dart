@@ -280,14 +280,34 @@ var projects = [
       Assets.projectsLogoKasa,
       'https://play.google.com/store/apps/details?id=network.kasa.exchange',
       Assets.projectsBgKasa,
-      "Kasa 앱 신규 개발 및 유지보수\n> 국내 프롭테크 샌드박스 규정내 신규 플랫폼 개발및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> A/B Test를 위한 Firebase Analytics & RemoteConfig 설계\n> Teamcity 기반의 CI/CD 작업 (iOS/Android)\n> sonarqube, firebase distribution, github release 등\n> Navigation Component 기반으로 화면이동 설계 \n> 하나은행 계좌 생성및 연결작업\n> 차트 라이브러리를 이용한 거래 추이 그래프, 공시지가 추이 그래프 개발 > 카카오 인증서 / 네이버 인증서를 통한 수익자총회 투표 기능 개발\n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발\n> Client chapter leader, iOS engineer 인력관리"),
+      "Kasa 앱 신규 개발 및 유지보수\n> 국내 프롭테크 샌드박스 규정내 신규 플랫폼 개발및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> A/B Test를 위한 Firebase Analytics & RemoteConfig 설계\n> Teamcity 기반의 CI/CD 작업 (iOS/Android)\n> sonarqube, firebase distribution, github release 등\n> Navigation Component 기반으로 화면이동 설계 \n> 하나은행 계좌 생성및 연결작업\n> 차트 라이브러리를 이용한 거래 추이 그래프, 공시지가 추이 그래프 개발 > 카카오 인증서 / 네이버 인증서를 통한 수익자총회 투표 기능 개발\n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발\n> Client chapter leader, iOS engineer 인력관리",
+      [
+        Assets.kasaBgKasa1,
+        Assets.kasaBgKasa2,
+        Assets.kasaBgKasa3,
+        Assets.kasaBgKasa4,
+        Assets.kasaBgKasa5,
+        Assets.kasaBgKasa6,
+      ]
+  ),
   ProjectModel(
       'AlyacM',
       '모바일 그린라이프 - 알약M',
       Assets.projectsLogoAlyacm,
       'https://play.google.com/store/apps/details?id=com.estsoft.alyac',
       Assets.projectsBgAlyacm,
-      "주요업무 : Kasa 앱 신규 개발 및 유지보수\n> 국내 프롭테크 샌드박스 규정내 신규 플랫폼 개발및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> A/B Test를 위한 Firebase Analytics & RemoteConfig 설계\n> Teamcity 기반의 CI/CD 작업 (iOS/Android)\n> sonarqube, firebase distribution, github release 등\n> Navigation Component 기반으로 화면이동 설계 > 하나은행 계좌 생성및 연결작업\n> 차트 라이브러리를 이용한 거래 추이 그래프, 공시지가 추이 그래프 개발 > 카카오 인증서 / 네이버 인증서를 통한 수익자총회 투표 기능 개발\n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발\n> Client chapter leader, iOS engineer 인력관리")
+      "주요업무 : Kasa 앱 신규 개발 및 유지보수\n> 국내 프롭테크 샌드박스 규정내 신규 플랫폼 개발및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> A/B Test를 위한 Firebase Analytics & RemoteConfig 설계\n> Teamcity 기반의 CI/CD 작업 (iOS/Android)\n> sonarqube, firebase distribution, github release 등\n> Navigation Component 기반으로 화면이동 설계 > 하나은행 계좌 생성및 연결작업\n> 차트 라이브러리를 이용한 거래 추이 그래프, 공시지가 추이 그래프 개발 > 카카오 인증서 / 네이버 인증서를 통한 수익자총회 투표 기능 개발\n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발\n> Client chapter leader, iOS engineer 인력관리",
+    [
+      Assets.alyacmAlyacm1,
+      Assets.alyacmAlyacm2,
+      Assets.alyacmAlyacm3,
+      Assets.alyacmAlyacm4,
+      Assets.alyacmAlyacm5,
+      Assets.alyacmAlyacm6,
+      Assets.alyacmAlyacm7,
+      Assets.alyacmAlyacm8,
+    ]
+  )
 ];
 
 class ProjectModel {
@@ -297,7 +317,8 @@ class ProjectModel {
   final String link;
   final String backgroundImage;
   final String description;
+  final List<String> storeImages;
 
   const ProjectModel(this.title, this.subTitle, this.icon, this.link,
-      this.backgroundImage, this.description);
+      this.backgroundImage, this.description, this.storeImages);
 }

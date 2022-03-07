@@ -30,7 +30,7 @@ class ContactDesktop extends StatelessWidget {
                     cardHeight: width < 1200 ? height * 0.28 : height * 0.25,
                     projectIconData: kContactIcons[index],
                     projectModel: ProjectModel(kContactTitles[index],
-                        kContactDetails[index], '', '', '',''),
+                        kContactDetails[index], '', '', '','',[]),
                   ),
                 ), //
               ),

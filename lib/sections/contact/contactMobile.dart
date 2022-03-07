@@ -27,7 +27,8 @@ class ContactMobileTab extends StatelessWidget {
               child: ProjectCard(
                 cardWidth: width > 480 ? width * 0.5 : width * 0.8,
                 projectIconData: kContactIcons[i],
-                projectModel: projects[i],
+                projectModel: ProjectModel(kContactTitles[i],
+                    kContactDetails[i], '', '', '','',[]),
               ),
             ),
             options: CarouselOptions(

@@ -9,10 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ServiceDetailsMobile extends StatefulWidget {
-  final String serviceTitle;
-  final String serviceDesc;
+  final ProjectModel projectModel;
 
-  const ServiceDetailsMobile({Key key, this.serviceTitle, this.serviceDesc})
+  const ServiceDetailsMobile({Key key, this.projectModel})
       : super(key: key);
 
   @override
@@ -28,7 +27,7 @@ class _ServiceDetailsMobileState extends State<ServiceDetailsMobile> {
     final _themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: AdaptiveText(widget.serviceTitle),
+        title: AdaptiveText(widget.projectModel.title),
       ),
       backgroundColor: _themeProvider.lightTheme ? Colors.white : Colors.black,
       body: SingleChildScrollView(
@@ -51,7 +50,7 @@ class _ServiceDetailsMobileState extends State<ServiceDetailsMobile> {
               ),
               const SizedBox(height: 10.0),
               AdaptiveText(
-                projects[_currentIndex].title,
+                widget.projectModel.title,
                 style: GoogleFonts.montserrat(
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold,
@@ -61,10 +60,10 @@ class _ServiceDetailsMobileState extends State<ServiceDetailsMobile> {
                 ),
               ),
               CarouselSlider.builder(
-                itemCount: projects.length,
+                itemCount: widget.projectModel.storeImages.length,
                 carouselController: _carouselController,
                 itemBuilder: (context, index, i) => Image.asset(
-                  projects[index].backgroundImage,
+                  widget.projectModel.storeImages[index],
                   height: 100.0,
                 ),
                 options: CarouselOptions(
@@ -103,7 +102,7 @@ class _ServiceDetailsMobileState extends State<ServiceDetailsMobile> {
                     color: kPrimaryColor,
                   ),
                   AdaptiveText(
-                    widget.serviceTitle,
+                    widget.projectModel.title,
                     style: GoogleFonts.montserrat(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
@@ -116,7 +115,7 @@ class _ServiceDetailsMobileState extends State<ServiceDetailsMobile> {
                 ],
               ),
               AdaptiveText(
-                widget.serviceDesc,
+                widget.projectModel.description,
                 style: GoogleFonts.montserrat(
                   height: 2.0,
                   color:

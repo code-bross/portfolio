@@ -41,8 +41,7 @@ class _ProjectCardState extends State<ProjectCard> {
             context,
             MaterialPageRoute(
               builder: (_) => ServiceDetails(
-                title: widget.projectModel.title,
-                dec: widget.projectModel.description,
+                projectModel: widget.projectModel,
               ),
             ))
       },
