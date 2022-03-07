@@ -62703,20 +62703,24 @@ $S:93}
 A.mM.prototype={
 ah(){return new A.Ak(A.afJ(),A.qg(0),A.c(["HOME","ABOUT","SKILLS","DEVELOPMENT","PROJECTS","CONTACT"],t.i),A.c([B.m0,B.AD,B.Az,B.AF,B.Ay,B.Aw,B.m1],t.bY),B.m)}}
 A.Ak.prototype={
-wN(a){var s,r=this
+wN(a){var s,r,q=this,p=t.w,o=q.c.D(p).f.a.a<1200
 switch(a){case 0:s=0
 break
-case 1:s=r.c.D(t.w).f.a.b*1.05
+case 1:s=q.c.D(p).f.a.b*1.05
 break
-case 2:s=r.c.D(t.w).f.a.b*1.98
+case 2:p=q.c.D(p).f
+r=o?1.95:1.98
+s=p.a.b*r
 break
-case 3:s=r.c.D(t.w).f.a.b*2.75
+case 3:p=q.c.D(p).f
+r=o?3.1:2.75
+s=p.a.b*r
 break
-case 4:s=r.c.D(t.w).f.a.b*3.6
+case 4:s=q.c.D(p).f.a.b*3.6
 break
-case 5:s=r.c.D(t.w).f.a.b*4
+case 5:s=q.c.D(p).f.a.b*4.1
 break
-default:s=0}r.r.fp(s,B.cU,A.aG(0,0,1))},
+default:s=0}q.r.fp(s,B.cU,A.aG(0,0,1))},
 Ms(a){var s=null
 switch(a){case 0:return new A.vz(s)
 case 1:return new A.CS(s)
