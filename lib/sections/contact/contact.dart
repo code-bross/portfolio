@@ -4,6 +4,7 @@ import 'package:folio/sections/contact/contactMobile.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Contact extends StatelessWidget {
+  Contact(GlobalKey key) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(

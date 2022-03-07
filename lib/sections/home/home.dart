@@ -5,6 +5,9 @@ import 'package:folio/sections/home/homeTab.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class HomePage extends StatefulWidget {
+
+  HomePage(GlobalKey key) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }

@@ -25,6 +25,19 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
+extension GlobalKeyExtension on GlobalKey {
+  Rect get globalPaintBounds {
+    final renderObject = currentContext?.findRenderObject();
+    final translation = renderObject?.getTransformTo(null)?.getTranslation();
+    if (translation != null && renderObject?.paintBounds != null) {
+      final offset = Offset(translation.x, translation.y);
+      return renderObject?.paintBounds?.shift(offset);
+    } else {
+      return null;
+    }
+  }
+}
+
 class _MainPageState extends State<MainPage> {
   ThemeProvider _themeProviders = ThemeProvider();
   bool isPressed = false;
@@ -38,6 +51,15 @@ class _MainPageState extends State<MainPage> {
     "DEVELOPMENT",
     "PROJECTS",
     "CONTACT"
+  ];
+
+  final List<GlobalKey> _keys = [
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
   ];
 
   final List<IconData> _sectionsIcons = [
@@ -66,16 +88,15 @@ class _MainPageState extends State<MainPage> {
         height = MediaQuery.of(context).size.height * (isMobile ? 1.95 : 1.98);
         break;
       case 3: //development
-        height = MediaQuery.of(context).size.height * (isMobile ? 3.1 : 2.75);
+        height = MediaQuery.of(context).size.height * (isMobile ? 3.1 : 2.5);
         break;
       case 4: //project
-        height = MediaQuery.of(context).size.height * 3.6;
+        height = MediaQuery.of(context).size.height * 3.56;
         break;
       case 5: //contact
-        height = MediaQuery.of(context).size.height * 4.1;
+        height = MediaQuery.of(context).size.height * (isMobile ? 4.1 : 4.6);
         break;
     }
-
     _scrollController.animateTo(
       height,
       duration: Duration(seconds: 1),
@@ -86,17 +107,17 @@ class _MainPageState extends State<MainPage> {
   Widget sectionWidget(int i) {
     switch (i) {
       case 0:
-        return HomePage();
+        return HomePage(_keys[0]);
       case 1:
-        return About();
+        return About(_keys[1]);
       case 2:
-        return Skills();
+        return Skills(_keys[2]);
       case 3:
-        return Services();
+        return Services(_keys[3]);
       case 4:
-        return Portfolio();
+        return Portfolio(_keys[4]);
       case 5:
-        return Contact();
+        return Contact(_keys[5]);
       case 6:
         return Footer();
       default:

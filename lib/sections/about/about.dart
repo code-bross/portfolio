@@ -6,6 +6,7 @@ import 'package:folio/sections/about/tabAbout.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class About extends StatelessWidget {
+  About(GlobalKey key) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(

@@ -27,10 +27,9 @@ class _SkillDesktopState extends State<SkillDesktop> {
           ),
           SizedBox(
             height: width > 1200 ? height * 0.65 : width * 0.39,
-            child: Flexible(
-                child: Column(
+            child: Column(
               children: skillWidgets(_themeProvider),
-            )),
+            ),
           ),
         ],
       ),
