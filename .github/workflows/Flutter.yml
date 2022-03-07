@@ -1,0 +1,29 @@
+name: Flutter CI/CD
+
+on:
+  pull_request:
+    branches: [ master ]
+jobs:
+  build_web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2.2.1
+        with:
+          channel: 'stable'
+      - name: Install dependencies
+        run: |
+          flutter pub get
+          dart pub global activate flutterfire_cli
+          flutter build web --base-href "/portfolio/" --web-renderer canvaskit --release
+      - name: Deploy Web
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./build/web
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Archive Web
+        uses: actions/upload-artifact@v1
+        with:
+          name: web-artifact
+          path: ./build/web
