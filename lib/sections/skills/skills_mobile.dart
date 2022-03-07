@@ -33,9 +33,12 @@ class SkillMobile extends StatelessWidget {
                   height: height * 0.035,
                 ),
                 Flexible(
-                    child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: skillWidgets(_themeProvider)))
+                    child: Container(
+                        margin: EdgeInsets.fromLTRB(
+                            width * 0.1, height * 0.2, width * 0.1, 0),
+                        child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: skillWidgets(_themeProvider))))
               ],
             ),
           ),

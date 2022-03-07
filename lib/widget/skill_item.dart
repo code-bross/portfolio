@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../constants.dart';
 import '../provider/themeProvider.dart';
 
 List<Widget> skillWidgets(ThemeProvider themeProvider) {
   return skills
       .map(
-        (skill) => Container(
+        (skill) => Flexible(child:  Container(
           margin: EdgeInsets.only(bottom: 15.0),
           child: Row(
             children: [
@@ -19,10 +19,11 @@ List<Widget> skillWidgets(ThemeProvider themeProvider) {
                   height: 38.0,
                   child: Text(
                     skill.skill,
-                    style: TextStyle(
-                        color: themeProvider.lightTheme
-                            ? Colors.white
-                            : Colors.black),
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 14.0,
+                      color: themeProvider.lightTheme ? Colors.white : Colors.black,
+                    ),
                   ),
                   color: themeProvider.lightTheme ? Colors.black : Colors.white,
                 ),
@@ -49,7 +50,7 @@ List<Widget> skillWidgets(ThemeProvider themeProvider) {
               )
             ],
           ),
-        ),
+        )),
       )
       .toList();
 }

@@ -206,8 +206,7 @@ final host = PortfolioHost(
     'assets/resume/resume.pdf',
     '',
     'Mobile client developer \n(android, flutter)',
-    '새로운 아이디어를 도출해내고 실현하는 것을 좋아하며,\n주어진일을 빠르고 효율적으로 처리하는 것을 목표로 합니다.\n현재는 개발자로서 더 성장할 수 있는 방법을 고민 중이며,\n일을 효율적으로 하는 방법, 더 나은 방향으로 커뮤니케이션하는 방법 등에 관심이 많습니다.'
-);
+    '새로운 아이디어를 도출해내고 실현하는 것을 좋아하며,\n주어진일을 빠르고 효율적으로 처리하는 것을 목표로 합니다.\n현재는 개발자로서 더 성장할 수 있는 방법을 고민 중이며,\n일을 효율적으로 하는 방법, 더 나은 방향으로 커뮤니케이션하는 방법 등에 관심이 많습니다.');
 
 class PortfolioHost {
   final String name;
@@ -288,8 +287,7 @@ var projects = [
         Assets.kasaBgKasa4,
         Assets.kasaBgKasa5,
         Assets.kasaBgKasa6,
-      ]
-  ),
+      ]),
   ProjectModel(
       'AlyacM',
       '모바일 그린라이프 - 알약M',
@@ -297,17 +295,16 @@ var projects = [
       'https://play.google.com/store/apps/details?id=com.estsoft.alyac',
       Assets.projectsBgAlyacm,
       "주요업무 : Kasa 앱 신규 개발 및 유지보수\n> 국내 프롭테크 샌드박스 규정내 신규 플랫폼 개발및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> A/B Test를 위한 Firebase Analytics & RemoteConfig 설계\n> Teamcity 기반의 CI/CD 작업 (iOS/Android)\n> sonarqube, firebase distribution, github release 등\n> Navigation Component 기반으로 화면이동 설계 > 하나은행 계좌 생성및 연결작업\n> 차트 라이브러리를 이용한 거래 추이 그래프, 공시지가 추이 그래프 개발 > 카카오 인증서 / 네이버 인증서를 통한 수익자총회 투표 기능 개발\n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발\n> Client chapter leader, iOS engineer 인력관리",
-    [
-      Assets.alyacmAlyacm1,
-      Assets.alyacmAlyacm2,
-      Assets.alyacmAlyacm3,
-      Assets.alyacmAlyacm4,
-      Assets.alyacmAlyacm5,
-      Assets.alyacmAlyacm6,
-      Assets.alyacmAlyacm7,
-      Assets.alyacmAlyacm8,
-    ]
-  )
+      [
+        Assets.alyacmAlyacm1,
+        Assets.alyacmAlyacm2,
+        Assets.alyacmAlyacm3,
+        Assets.alyacmAlyacm4,
+        Assets.alyacmAlyacm5,
+        Assets.alyacmAlyacm6,
+        Assets.alyacmAlyacm7,
+        Assets.alyacmAlyacm8,
+      ])
 ];
 
 class ProjectModel {
@@ -323,7 +320,6 @@ class ProjectModel {
       this.backgroundImage, this.description, this.storeImages);
 }
 
-
 class SkillModel {
   final String skill;
   final int percentage;
@@ -335,11 +331,11 @@ class SkillModel {
 }
 
 List<SkillModel> skills = [
-  SkillModel(skill: 'Kotlin', percentage: 90),
   SkillModel(skill: 'ReactiveX', percentage: 90),
-  SkillModel(skill: 'Testability', percentage: 80),
-  SkillModel(skill: 'Java', percentage: 70),
-  SkillModel(skill: 'Dart', percentage: 60),
-  SkillModel(skill: 'Swift', percentage: 50),
-  SkillModel(skill: 'JavaScript', percentage: 50)
+  SkillModel(skill: 'Coroutine', percentage: 85),
+  SkillModel(skill: 'Junit-Test', percentage: 80),
+  SkillModel(skill: 'Espresso', percentage: 80),
+  SkillModel(skill: 'Robolectric', percentage: 80),
+  SkillModel(skill: 'Mockito', percentage: 80),
+  SkillModel(skill: 'Appium', percentage: 75),
 ];

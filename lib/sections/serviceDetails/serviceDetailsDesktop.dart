@@ -178,11 +178,6 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
                 Container(
                   height: screenSize.height * 0.55,
                   width: screenSize.width,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image:
-                              AssetImage(widget.projectModel.backgroundImage),
-                          fit: BoxFit.cover)),
                   child: SizedBox(
                     height: screenSize.height * 0.55,
                     width: screenSize.width,
