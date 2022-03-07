@@ -51,25 +51,28 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void _scroll(int i) {
+    double width = MediaQuery.of(context).size.width;
+    var isMobile = (width < 1200);
+
     var height = 0.0;
     switch (i) {
-      case 0:
+      case 0: //home
         height = 0.0;
         break;
-      case 1:
+      case 1: //about
         height = MediaQuery.of(context).size.height * 1.05;
         break;
-      case 2:
-        height = MediaQuery.of(context).size.height * 1.98;
+      case 2: // skills
+        height = MediaQuery.of(context).size.height * (isMobile ? 1.95 : 1.98);
         break;
-      case 3:
-        height = MediaQuery.of(context).size.height * 2.75;
+      case 3: //development
+        height = MediaQuery.of(context).size.height * (isMobile ? 3.1 : 2.75);
         break;
-      case 4:
+      case 4: //project
         height = MediaQuery.of(context).size.height * 3.6;
         break;
-      case 5:
-        height = MediaQuery.of(context).size.height * 4.0;
+      case 5: //contact
+        height = MediaQuery.of(context).size.height * 4.1;
         break;
     }
 
@@ -273,17 +276,17 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         const SizedBox(width: 15.0),
-        Flexible(child:
-        SizedBox(
-          height: 30.0,
-          child: Switch(
-            inactiveTrackColor: Colors.grey,
-            value: !_themeProv.lightTheme,
-            onChanged: (value) {
-              _themeProv.lightTheme = !value;
-            },
-            activeColor: kPrimaryColor,
-          )),
+        Flexible(
+          child: SizedBox(
+              height: 30.0,
+              child: Switch(
+                inactiveTrackColor: Colors.grey,
+                value: !_themeProv.lightTheme,
+                onChanged: (value) {
+                  _themeProv.lightTheme = !value;
+                },
+                activeColor: kPrimaryColor,
+              )),
         ),
         const SizedBox(width: 15.0),
       ],
