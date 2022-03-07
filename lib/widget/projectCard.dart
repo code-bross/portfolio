@@ -37,13 +37,16 @@ class _ProjectCardState extends State<ProjectCard> {
     double width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: () => {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => ServiceDetails(
-                projectModel: widget.projectModel,
-              ),
-            ))
+        if(widget.projectModel.storeImages.isNotEmpty){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) =>
+                    ServiceDetails(
+                      projectModel: widget.projectModel,
+                    ),
+              ))
+        }
       },
       onHover: (isHovering) {
         if (isHovering) {
