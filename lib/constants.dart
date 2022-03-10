@@ -191,14 +191,14 @@ final kContactTitles = [
 
 final kContactDetails = [
   "Seoul, Korea",
-  "(+82) 10-8421-0101",
+  "-",
   "rkd2468@icloud.com"
 ];
 
 final host = PortfolioHost(
     '강영길',
     'z3r0ad',
-    '(+82) 10-8421-0101',
+    '-',
     'rkd2468@icloud.com',
     ['Android Engineer', 'Mobile Client Engineer'],
     'https://github.com/code-bross',
