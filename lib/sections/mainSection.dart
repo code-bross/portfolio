@@ -361,7 +361,7 @@ class _MainPageState extends State<MainPage> {
                       borderRadius: BorderRadius.circular(5.0),
                       side: BorderSide(color: kPrimaryColor)),
                   onPressed: () {
-                    launchURL(context, host.resumePath);
+                    launchURL(context, host.resumeUrl);
                   },
                   child: ListTile(
                     leading: Icon(
