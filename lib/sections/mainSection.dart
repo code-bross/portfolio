@@ -18,8 +18,6 @@ import 'package:folio/widget/arrowOnTop.dart';
 import 'package:folio/widget/footer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'skills/skills.dart';
-
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
@@ -47,14 +45,12 @@ class _MainPageState extends State<MainPage> {
   final List<String> _sectionsName = [
     "HOME",
     "ABOUT",
-    "SKILLS",
     "DEVELOPMENT",
     "PROJECTS",
     "CONTACT"
   ];
 
   final List<GlobalKey> _keys = [
-    GlobalKey(),
     GlobalKey(),
     GlobalKey(),
     GlobalKey(),
@@ -84,16 +80,13 @@ class _MainPageState extends State<MainPage> {
       case 1: //about
         height = MediaQuery.of(context).size.height * 1.05;
         break;
-      case 2: // skills
-        height = MediaQuery.of(context).size.height * (isMobile ? 1.95 : 1.98);
-        break;
-      case 3: //development
+      case 2: //development
         height = MediaQuery.of(context).size.height * (isMobile ? 3.1 : 2.5);
         break;
-      case 4: //project
+      case 3: //project
         height = MediaQuery.of(context).size.height * 3.56;
         break;
-      case 5: //contact
+      case 4: //contact
         height = MediaQuery.of(context).size.height * (isMobile ? 4.1 : 4.6);
         break;
     }
@@ -111,14 +104,12 @@ class _MainPageState extends State<MainPage> {
       case 1:
         return About(_keys[1]);
       case 2:
-        return Skills(_keys[2]);
+        return Services(_keys[2]);
       case 3:
-        return Services(_keys[3]);
+        return Portfolio(_keys[3]);
       case 4:
-        return Portfolio(_keys[4]);
+        return Contact(_keys[4]);
       case 5:
-        return Contact(_keys[5]);
-      case 6:
         return Footer();
       default:
         return Container();
