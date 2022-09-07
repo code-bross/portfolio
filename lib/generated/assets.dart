@@ -32,6 +32,7 @@ class Assets {
   static const String projectsLogoAlyacm = 'assets/projects/logo_alyacm.png';
   static const String projectsLogoKasa = 'assets/projects/logo_kasa.png';
   static const String resumeResume = 'assets/resume/resume.pdf';
+  static const String servicesApi = 'assets/services/api.png';
   static const String servicesApp = 'assets/services/app.png';
   static const String servicesBlog = 'assets/services/blog.png';
   static const String servicesFiverr = 'assets/services/fiverr.png';

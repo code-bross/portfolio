@@ -75,7 +75,7 @@ class _ServiceDesktopState extends State<ServiceDesktop> {
                         child: ServiceCard(
                           cardWidth: width < 1200 ? width * 0.25 : width * 0.22,
                           cardHeight:
-                              width < 1200 ? height * 0.37 : height * 0.35,
+                              width < 1200 ? height * 0.37 : height * 0.4,
                           serviceIcon: serviceSections[index].icon,
                           serviceTitle: serviceSections[index].title,
                           serviceDescription:
