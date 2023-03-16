@@ -23,7 +23,7 @@ jobs:
           publish_dir: ./build/web
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Archive Web
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: web-artifact
           path: ./build/web
