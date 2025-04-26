@@ -8,19 +8,19 @@ import '../sections/serviceDetails/serviceDetails.dart';
 
 class ProjectCard extends StatefulWidget {
   final ProjectModel projectModel;
-  final IconData projectIconData;
+  final IconData? projectIconData; // Nullable
   final double cardWidth;
   final double cardHeight;
-  final Widget bottomWidget;
+  final Widget? bottomWidget; // Nullable
 
-  const ProjectCard(
-      {Key key,
-      this.projectModel,
-      this.bottomWidget,
-      this.projectIconData,
-      this.cardWidth,
-      this.cardHeight})
-      : super(key: key);
+  const ProjectCard({
+    Key? key,
+    required this.projectModel,
+    this.projectIconData,
+    this.bottomWidget,
+    required this.cardWidth,
+    required this.cardHeight,
+  }) : super(key: key);
 
   @override
   _ProjectCardState createState() => _ProjectCardState();
@@ -29,35 +29,29 @@ class ProjectCard extends StatefulWidget {
 class _ProjectCardState extends State<ProjectCard> {
   bool isHover = false;
 
-
   @override
   Widget build(BuildContext context) {
     final _themeProvider = Provider.of<ThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
     return InkWell(
-      onTap: () => {
-        if(widget.projectModel.storeImages.isNotEmpty){
+      onTap: () {
+        if (widget.projectModel.storeImages.isNotEmpty) {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) =>
-                    ServiceDetails(
-                      projectModel: widget.projectModel,
-                    ),
-              ))
+            context,
+            MaterialPageRoute(
+              builder: (_) => ServiceDetails(
+                projectModel: widget.projectModel,
+              ),
+            ),
+          );
         }
       },
       onHover: (isHovering) {
-        if (isHovering) {
-          setState(() {
-            isHover = true;
-          });
-        } else {
-          setState(() {
-            isHover = false;
-          });
-        }
+        setState(() {
+          isHover = isHovering;
+        });
       },
       child: Container(
         width: widget.cardWidth,
@@ -74,7 +68,7 @@ class _ProjectCardState extends State<ProjectCard> {
                 : BorderSide(
                     color: _themeProvider.lightTheme
                         ? Colors.white
-                        : Colors.grey[900],
+                        : Colors.grey[900] ?? Colors.grey,
                   ),
           ),
           boxShadow: isHover
@@ -99,81 +93,70 @@ class _ProjectCardState extends State<ProjectCard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                widget.projectModel.icon.isNotEmpty
-                    ? (width > 1135 || width < 950)
-                        ? Image.asset(
-                            widget.projectModel.icon,
-                            height: height * 0.05,
-                          )
-                        : Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Image.asset(
-                                widget.projectModel.icon,
-                                height: height * 0.03,
+                if (widget.projectModel.icon.isNotEmpty)
+                  (width > 1135 || width < 950)
+                      ? Image.asset(
+                          widget.projectModel.icon,
+                          height: height * 0.05,
+                        )
+                      : Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                              widget.projectModel.icon,
+                              height: height * 0.03,
+                            ),
+                            SizedBox(width: width * 0.01),
+                            Text(
+                              widget.projectModel.title,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.montserrat(
+                                fontSize: height * 0.015,
+                                letterSpacing: 1.5,
+                                fontWeight: FontWeight.w400,
+                                color: _themeProvider.lightTheme
+                                    ? Colors.black
+                                    : Colors.white,
                               ),
-                              SizedBox(
-                                width: width * 0.01,
-                              ),
-                              Text(
-                                widget.projectModel.title,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.montserrat(
-                                  fontSize: height * 0.015,
-                                  letterSpacing: 1.5,
-                                  fontWeight: FontWeight.w400,
-                                  color: _themeProvider.lightTheme
-                                      ? Colors.black
-                                      : Colors.white,
-                                ),
-                              ),
-                            ],
-                          )
-                    : Container(),
-                widget.projectIconData != null
-                    ? Icon(
-                        widget.projectIconData,
-                        color: kPrimaryColor,
-                        size: height * 0.1,
-                      )
-                    : Container(),
-                (width > 1135 || width < 950)
-                    ? SizedBox(
-                        height: height * 0.02,
-                      )
-                    : SizedBox(),
-                (width > 1135 || width < 950)
-                    ? AdaptiveText(
-                        widget.projectModel.title,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                          fontSize: height * 0.02,
-                          letterSpacing: 1.5,
-                          fontWeight: FontWeight.w400,
-                          color: _themeProvider.lightTheme
-                              ? Colors.white
-                              : Colors.grey[900],
+                            ),
+                          ],
                         ),
-                      )
-                    : Container(),
-                SizedBox(
-                  height: height * 0.01,
-                ),
+                if (widget.projectIconData != null)
+                  Icon(
+                    widget.projectIconData!,
+                    color: kPrimaryColor,
+                    size: height * 0.1,
+                  ),
+                if (width > 1135 || width < 950)
+                  SizedBox(height: height * 0.02),
+                if (width > 1135 || width < 950)
+                  AdaptiveText(
+                    widget.projectModel.title,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.montserrat(
+                      fontSize: height * 0.02,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.w400,
+                      color: _themeProvider.lightTheme
+                          ? Colors.white
+                          : Colors.grey[900],
+                    ),
+                  ),
+                SizedBox(height: height * 0.01),
                 AdaptiveText(
                   widget.projectModel.subTitle,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.montserrat(
-                      fontSize: height * 0.015,
-                      letterSpacing: 2.0,
-                      color: _themeProvider.lightTheme
-                          ? Colors.black
-                          : Colors.white,
-                      fontWeight: FontWeight.w300,
-                      height: width >= 600 ? 2.0 : 1.2),
+                    fontSize: height * 0.015,
+                    letterSpacing: 2.0,
+                    color: _themeProvider.lightTheme
+                        ? Colors.black
+                        : Colors.white,
+                    fontWeight: FontWeight.w300,
+                    height: width >= 600 ? 2.0 : 1.2,
+                  ),
                 ),
-                SizedBox(
-                  height: height * 0.01,
-                ),
+                SizedBox(height: height * 0.01),
                 widget.bottomWidget ?? Container(),
               ],
             ),
@@ -191,18 +174,5 @@ class _ProjectCardState extends State<ProjectCard> {
         ),
       ),
     );
-  }
-
-
-  void _navigateDetail() async {
-    print('test');
-    // Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //       builder: (_) => ServiceDetails(
-    //         title: 'test',
-    //         dec: 'test',
-    //       ),
-    //     ));
   }
 }

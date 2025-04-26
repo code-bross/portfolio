@@ -7,7 +7,9 @@ import '../../constants.dart';
 class ServiceDetails extends StatelessWidget {
   final ProjectModel projectModel;
 
-  const ServiceDetails({Key key, this.projectModel}) : super(key: key);
+  // Making projectModel a required parameter in the constructor
+  const ServiceDetails({Key? key, required this.projectModel}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
@@ -15,10 +17,10 @@ class ServiceDetails extends StatelessWidget {
         projectModel: projectModel,
       ),
       tablet: ServiceDetailsMobile(
-      projectModel: projectModel,
+        projectModel: projectModel,
       ),
       desktop: ServiceDetailsDesktop(
-        projectModel: projectModel
+        projectModel: projectModel,
       ),
     );
   }

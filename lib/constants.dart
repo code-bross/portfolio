@@ -346,8 +346,8 @@ class SkillModel {
   final int percentage;
 
   SkillModel({
-    @required this.skill,
-    @required this.percentage,
+    required this.skill,
+    required this.percentage,
   });
 }
 

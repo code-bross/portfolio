@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:folio/constants.dart';
 import 'package:folio/provider/themeProvider.dart';
 import 'package:folio/widget/adaptiveText.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,6 +21,7 @@ class Footer extends StatelessWidget {
           children: [
             AdaptiveText(
               "Developed in 💙 with ",
+              textAlign: TextAlign.start,
               style: GoogleFonts.montserrat(
                 fontWeight: FontWeight.w300,
                 color: _themeProvider.lightTheme ? Colors.black : Colors.white,

@@ -23,7 +23,8 @@ class PortfolioMobileTab extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 15.0),
               child: ProjectCard(
                 cardWidth: width < 650 ? width * 0.8 : width * 0.4,
-                projectModel : projects[i],
+                cardHeight: width < 650 ? height * 0.32 : height * 0.1,
+                projectModel: projects[i],
               ),
             ),
             options: CarouselOptions(
