@@ -37,7 +37,7 @@ class Assets {
   static const String kasaBgKasa6 = 'assets/projects/kasa/bg_kasa_6.png';
   static const String projectsAndroid = 'assets/projects/android.png';
   static const String projectsBgAlyacm = 'assets/projects/bg_alyacm.png';
-  static const String projectsBgiKIS = 'assets/projects/bg_ikis.wepb';
+  static const String projectsBgiKIS = 'assets/projects/bg_ikis.jpg';
 
   
   static const String projectsBgKasa = 'assets/projects/bg_kasa.jpeg';
@@ -46,7 +46,7 @@ class Assets {
   static const String projectsKotlin = 'assets/projects/kotlin.png';
   static const String projectsLogoAlyacm = 'assets/projects/logo_alyacm.png';
   static const String projectsLogoKasa = 'assets/projects/logo_kasa.png';
-  static const String projectsLogoiKIS = 'assets/projects/lologo_ikis.webp';
+  static const String projectsLogoiKIS = 'assets/projects/logo_ikis.webp';
   static const String resumeResume = 'assets/resume/resume.pdf';
   static const String servicesApi = 'assets/services/api.png';
   static const String servicesApp = 'assets/services/app.png';
