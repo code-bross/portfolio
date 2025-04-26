@@ -309,6 +309,22 @@ var projects = [
         Assets.alyacmAlyacm6,
         Assets.alyacmAlyacm7,
         Assets.alyacmAlyacm8,
+      ]),
+  ProjectModel(
+      'iKIS',
+      '한국투자증권 베트남 MTS - iKIS',
+      Assets.projectsLogoiKIS,
+      'https://play.google.com/store/apps/details?id=com.koreainvestment.vietnam',
+      Assets.projectsBgiKIS,
+      "주요업무 : 한국투자증권 MTS 베트남 앱 신규 개발 및 유지보수\n> 베트남 MTS 신규 플랫폼 개발 및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> GithubAction 기반의 CI/CD 작업 (Android)\n> sonarqube, firebase distribution, github release 등\n> Compose Navigation Component 기반으로 화면이동 설계 \n> Room, Hilt 기반으로한 MVI framework 설계\n> WatchList, 종목 상세 개발 \n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발",
+      [
+        Assets.iKIS1,
+        Assets.iKIS2,
+        Assets.iKIS3,
+        Assets.iKIS4,
+        Assets.iKIS5,
+        Assets.iKIS6,
+        Assets.iKIS7,
       ])
 ];
 
