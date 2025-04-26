@@ -55,7 +55,7 @@ class Assets {
   static const String projectsBgAlyacm = 'assets/projects/bg_alyacm.png';
   static const String projectsBgiKIS = 'assets/projects/bg_ikis.jpg';
   static const String projectsBgiKISI = 'assets/projects/bg_ikisi.jpg';
-  static const String projectsBgKIS = 'assets/projects/bg_kis.jpg';
+  static const String projectsBgKIS = 'assets/projects/bg_kis.png';
 
   
   static const String projectsBgKasa = 'assets/projects/bg_kasa.jpeg';
