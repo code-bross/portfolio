@@ -10,6 +10,18 @@ class Assets {
   static const String alyacmAlyacm6 = 'assets/projects/alyacm/alyacm_6.png';
   static const String alyacmAlyacm7 = 'assets/projects/alyacm/alyacm_7.png';
   static const String alyacmAlyacm8 = 'assets/projects/alyacm/alyacm_8.png';
+
+
+
+  static const String iKIS1 = 'assets/projects/ikis/ikis_1.webp';
+  static const String iKIS2 = 'assets/projects/ikis/ikis_2.webp';
+  static const String iKIS3 = 'assets/projects/ikis/ikis_3.webp';
+  static const String iKIS4 = 'assets/projects/ikis/ikis_4.webp';
+  static const String iKIS5 = 'assets/projects/ikis/ikis_5.webp';
+  static const String iKIS6 = 'assets/projects/ikis/ikis_6.webp';
+  static const String iKIS7 = 'assets/projects/ikis/ikis_7.webp';
+
+
   static const String assetsDsc = 'assets/dsc.png';
   static const String assetsHi = 'assets/hi.gif';
   static const String assetsSakun1 = 'assets/sakun_1.png';
@@ -25,13 +37,18 @@ class Assets {
   static const String kasaBgKasa6 = 'assets/projects/kasa/bg_kasa_6.png';
   static const String projectsAndroid = 'assets/projects/android.png';
   static const String projectsBgAlyacm = 'assets/projects/bg_alyacm.png';
+  static const String projectsBgiKIS = 'assets/projects/bg_ikis.jpg';
+
+  
   static const String projectsBgKasa = 'assets/projects/bg_kasa.jpeg';
   static const String projectsFlutter = 'assets/projects/flutter.png';
   static const String projectsJava = 'assets/projects/java.png';
   static const String projectsKotlin = 'assets/projects/kotlin.png';
   static const String projectsLogoAlyacm = 'assets/projects/logo_alyacm.png';
   static const String projectsLogoKasa = 'assets/projects/logo_kasa.png';
+  static const String projectsLogoiKIS = 'assets/projects/logo_ikis.webp';
   static const String resumeResume = 'assets/resume/resume.pdf';
+  static const String servicesApi = 'assets/services/api.png';
   static const String servicesApp = 'assets/services/app.png';
   static const String servicesBlog = 'assets/services/blog.png';
   static const String servicesFiverr = 'assets/services/fiverr.png';

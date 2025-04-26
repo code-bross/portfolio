@@ -37,105 +37,106 @@ class HomeDesktop extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            margin:
-                EdgeInsets.fromLTRB(width * 0.1, height * 0.2, width * 0.1, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AdaptiveText(
-                      "WELCOME TO MY PORTFOLIO! ",
-                      style: GoogleFonts.montserrat(
-                        fontSize: height * 0.03,
-                        fontWeight: FontWeight.w300,
+          SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.fromLTRB(width * 0.1, height * 0.2, width * 0.1, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AdaptiveText(
+                        "WELCOME TO MY PORTFOLIO! ",
+                        style: GoogleFonts.montserrat(
+                          fontSize: height * 0.03,
+                          fontWeight: FontWeight.w300,
+                          color: _themeProvider.lightTheme
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                      ),
+                      EntranceFader(
+                        offset: Offset(0, 0),
+                        delay: Duration(seconds: 2),
+                        duration: Duration(milliseconds: 800),
+                        child: Image.asset(
+                          "assets/hi.gif",
+                          height: height * 0.05,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: height * 0.04,
+                  ),
+                  AdaptiveText(
+                    host.nickName,
+                    style: GoogleFonts.montserrat(
+                        fontSize: width < 1200 ? height * 0.085 : height * 0.095,
+                        fontWeight: FontWeight.w100,
                         color: _themeProvider.lightTheme
                             ? Colors.black
                             : Colors.white,
-                      ),
-                    ),
-                    EntranceFader(
-                      offset: Offset(0, 0),
-                      delay: Duration(seconds: 2),
-                      duration: Duration(milliseconds: 800),
-                      child: Image.asset(
-                        "assets/hi.gif",
-                        height: height * 0.05,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: height * 0.04,
-                ),
-                AdaptiveText(
-                  host.nickName,
-                  style: GoogleFonts.montserrat(
-                      fontSize: width < 1200 ? height * 0.085 : height * 0.095,
-                      fontWeight: FontWeight.w100,
-                      color: _themeProvider.lightTheme
-                          ? Colors.black
-                          : Colors.white,
-                      letterSpacing: 4.0),
-                ),
-                AdaptiveText(
-                  host.name,
-                  style: GoogleFonts.montserrat(
-                      color: _themeProvider.lightTheme
-                          ? Colors.black
-                          : Colors.white,
-                      fontSize: width < 1200 ? height * 0.085 : height * 0.095,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 5.0),
-                ),
-                EntranceFader(
-                  offset: Offset(-10, 0),
-                  delay: Duration(seconds: 1),
-                  duration: Duration(milliseconds: 800),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.play_arrow_rounded,
-                        color: kPrimaryColor,
-                      ),
-                      AnimatedTextKit(
-                          isRepeatingAnimation: true,
-                          pause: Duration(milliseconds: 200),
-                          animatedTexts: host.positions
-                              .map((e) => TypewriterAnimatedText(
-                                    e,
-                                    textStyle: GoogleFonts.montserrat(
-                                      fontSize: height * 0.03,
-                                      fontWeight: FontWeight.w200,
-                                      color: _themeProvider.lightTheme
-                                          ? Colors.black
-                                          : Colors.white,
-                                    ),
-                                  ))
-                              .toList())
-                    ],
+                        letterSpacing: 4.0),
                   ),
-                ),
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: List.generate(
-                    kSocialIcons.length,
-                    (index) => WidgetAnimator(
-                      child: SocialMediaIconBtn(
-                        icon: kSocialIcons[index],
-                        socialLink: kSocialLinks[index],
-                        height: height * 0.035,
-                        horizontalPadding: width * 0.005,
+                  AdaptiveText(
+                    host.name,
+                    style: GoogleFonts.montserrat(
+                        color: _themeProvider.lightTheme
+                            ? Colors.black
+                            : Colors.white,
+                        fontSize: width < 1200 ? height * 0.085 : height * 0.095,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 5.0),
+                  ),
+                  EntranceFader(
+                    offset: Offset(-10, 0),
+                    delay: Duration(seconds: 1),
+                    duration: Duration(milliseconds: 800),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.play_arrow_rounded,
+                          color: kPrimaryColor,
+                        ),
+                        AnimatedTextKit(
+                            isRepeatingAnimation: true,
+                            pause: Duration(milliseconds: 200),
+                            animatedTexts: host.positions
+                                .map((e) => TypewriterAnimatedText(
+                                      e,
+                                      textStyle: GoogleFonts.montserrat(
+                                        fontSize: height * 0.03,
+                                        fontWeight: FontWeight.w200,
+                                        color: _themeProvider.lightTheme
+                                            ? Colors.black
+                                            : Colors.white,
+                                      ),
+                                    ))
+                                .toList())
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: height * 0.05,
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: List.generate(
+                      kSocialIcons.length,
+                      (index) => WidgetAnimator(
+                        child: SocialMediaIconBtn(
+                          icon: kSocialIcons[index],
+                          socialLink: kSocialLinks[index],
+                          height: height * 0.035,
+                          horizontalPadding: width * 0.005,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

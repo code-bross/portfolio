@@ -200,12 +200,12 @@ final host = PortfolioHost(
     'z3r0ad',
     '-',
     'rkd2468@icloud.com',
-    ['Android Engineer', 'Mobile Client Engineer'],
+    ['Android Engineer (Main)', 'Mobile Client Engineer', 'Backend Engineer'],
     'https://github.com/code-bross',
     'https://www.linkedin.com/in/%EC%98%81%EA%B8%B8-%EA%B0%95-833621187',
     'assets/assets/resume/resume.pdf',
     'https://code-bross.github.io/portfolio/assets/assets/resume/resume.pdf',
-    'Mobile client developer \n(android, flutter)',
+    'Mobile client developer \nBackend developer \n(android, flutter, python)',
     '새로운 아이디어를 도출해내고 실현하는 것을 좋아하며,\n주어진일을 빠르고 효율적으로 처리하는 것을 목표로 합니다.\n현재는 개발자로서 더 성장할 수 있는 방법을 고민 중이며,\n일을 효율적으로 하는 방법, 더 나은 방향으로 커뮤니케이션하는 방법 등에 관심이 많습니다.');
 
 class PortfolioHost {
@@ -247,8 +247,13 @@ var serviceSections = [
       'assets/services/ui.png',
       ''),
   ServiceSectionModel(
+      'Backend Development',
+      'Backend platform development via Python\n- FastApi\n- Web\n- Swagger',
+      'assets/services/api.png',
+      ''),
+  ServiceSectionModel(
       'CI/CD',
-      'CI/CD\n- GithubActions\n- Teamcity\n- Jenkins\n- Gitlab\n- Fastlane\n- FirebaseDistribution\n- GooglePlay\n- Testflight',
+      'CI/CD\n- GithubActions\n- Teamcity\n- Jenkins\n- Gitlab\n- Fastlane\n- FirebaseDistribution\n- GooglePlay\n- Testflight\n -ArgoCD\n -GitOps',
       'assets/services/github_action.png',
       ''),
   ServiceSectionModel(
@@ -304,6 +309,22 @@ var projects = [
         Assets.alyacmAlyacm6,
         Assets.alyacmAlyacm7,
         Assets.alyacmAlyacm8,
+      ]),
+  ProjectModel(
+      'iKIS',
+      '한국투자증권 베트남 MTS - iKIS',
+      Assets.projectsLogoiKIS,
+      'https://play.google.com/store/apps/details?id=com.koreainvestment.vietnam',
+      Assets.projectsBgiKIS,
+      "주요업무 : 한국투자증권 MTS 베트남 앱 신규 개발 및 유지보수\n> 베트남 MTS 신규 플랫폼 개발 및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> GithubAction 기반의 CI/CD 작업 (Android)\n> sonarqube, firebase distribution, github release 등\n> Compose Navigation Component 기반으로 화면이동 설계 \n> Room, Hilt 기반으로한 MVI framework 설계\n> WatchList, 종목 상세 개발 \n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발",
+      [
+        Assets.iKIS1,
+        Assets.iKIS2,
+        Assets.iKIS3,
+        Assets.iKIS4,
+        Assets.iKIS5,
+        Assets.iKIS6,
+        Assets.iKIS7,
       ])
 ];
 
@@ -325,8 +346,8 @@ class SkillModel {
   final int percentage;
 
   SkillModel({
-    @required this.skill,
-    @required this.percentage,
+    required this.skill,
+    required this.percentage,
   });
 }
 

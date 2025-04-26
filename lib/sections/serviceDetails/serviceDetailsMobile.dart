@@ -1,17 +1,16 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;  // Alias the import
 import 'package:flutter/material.dart';
 import 'package:folio/constants.dart';
 import 'package:folio/provider/themeProvider.dart';
 import 'package:folio/widget/adaptiveText.dart';
-import 'package:folio/widget/customBtn.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ServiceDetailsMobile extends StatefulWidget {
   final ProjectModel projectModel;
 
-  const ServiceDetailsMobile({Key key, this.projectModel})
+  const ServiceDetailsMobile({Key? key, required this.projectModel})
       : super(key: key);
 
   @override
@@ -19,7 +18,7 @@ class ServiceDetailsMobile extends StatefulWidget {
 }
 
 class _ServiceDetailsMobileState extends State<ServiceDetailsMobile> {
-  CarouselController _carouselController = CarouselController();
+  CarouselSliderController _carouselController = CarouselSliderController();
   int _currentIndex = 0;
 
   @override
@@ -59,41 +58,43 @@ class _ServiceDetailsMobileState extends State<ServiceDetailsMobile> {
                       _themeProvider.lightTheme ? Colors.black : Colors.white,
                 ),
               ),
-              CarouselSlider.builder(
+              carousel.CarouselSlider.builder(
                 itemCount: widget.projectModel.storeImages.length,
                 carouselController: _carouselController,
                 itemBuilder: (context, index, i) => Image.asset(
                   widget.projectModel.storeImages[index],
                   height: 100.0,
                 ),
-                options: CarouselOptions(
-                    autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 3),
-                    enlargeCenterPage: true,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _currentIndex = index;
-                      });
-                    }),
+                options: carousel.CarouselOptions(
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  enlargeCenterPage: true,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  },
+                ),
               ),
               Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: projects.map((project) {
-                    int index = projects.indexOf(project);
-                    return AnimatedContainer(
-                      duration: Duration(milliseconds: 200),
-                      width: _currentIndex == index ? 25.0 : 7.0,
-                      height: 7.0,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 2.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(360),
-                        color: _currentIndex == index
-                            ? kPrimaryColor
-                            : kPrimaryColor.withAlpha(100),
-                      ),
-                    );
-                  }).toList()),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: widget.projectModel.storeImages.map((project) {
+                  int index = widget.projectModel.storeImages.indexOf(project);
+                  return AnimatedContainer(
+                    duration: Duration(milliseconds: 200),
+                    width: _currentIndex == index ? 25.0 : 7.0,
+                    height: 7.0,
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 2.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(360),
+                      color: _currentIndex == index
+                          ? kPrimaryColor
+                          : kPrimaryColor.withAlpha(100),
+                    ),
+                  );
+                }).toList(),
+              ),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
