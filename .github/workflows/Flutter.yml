@@ -16,7 +16,7 @@ jobs:
         run: |
           flutter pub get
           dart pub global activate flutterfire_cli
-          flutter build web --base-href "/portfolio/" --web-renderer canvaskit --release
+          flutter build web --base-href "/portfolio/" --release
       - name: Deploy Web
         uses: peaceiris/actions-gh-pages@v3
         with:
