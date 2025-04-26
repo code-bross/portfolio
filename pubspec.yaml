@@ -65,6 +65,8 @@ flutter:
     - assets/projects/kasa/
     - assets/projects/alyacm/
     - assets/projects/ikis/
+    - assets/projects/ikisi/
+    - assets/projects/kis/
     - assets/resume/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

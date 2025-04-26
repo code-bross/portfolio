@@ -11,8 +11,6 @@ class Assets {
   static const String alyacmAlyacm7 = 'assets/projects/alyacm/alyacm_7.png';
   static const String alyacmAlyacm8 = 'assets/projects/alyacm/alyacm_8.png';
 
-
-
   static const String iKIS1 = 'assets/projects/ikis/ikis_1.webp';
   static const String iKIS2 = 'assets/projects/ikis/ikis_2.webp';
   static const String iKIS3 = 'assets/projects/ikis/ikis_3.webp';
@@ -20,6 +18,24 @@ class Assets {
   static const String iKIS5 = 'assets/projects/ikis/ikis_5.webp';
   static const String iKIS6 = 'assets/projects/ikis/ikis_6.webp';
   static const String iKIS7 = 'assets/projects/ikis/ikis_7.webp';
+
+  static const String iKISI1 = 'assets/projects/ikisi/ikisi_1.webp';
+  static const String iKISI2 = 'assets/projects/ikisi/ikisi_2.webp';
+  static const String iKISI3 = 'assets/projects/ikisi/ikisi_3.webp';
+  static const String iKISI4 = 'assets/projects/ikisi/ikisi_4.webp';
+  static const String iKISI5 = 'assets/projects/ikisi/ikisi_5.webp';
+  static const String iKISI6 = 'assets/projects/ikisi/ikisi_6.webp';
+  static const String iKISI7 = 'assets/projects/ikisi/ikisi_7.webp';
+  static const String iKISI8 = 'assets/projects/ikisi/ikisi_8.webp';
+
+  static const String KIS1 = 'assets/projects/kis/kis_1.webp';
+  static const String KIS2 = 'assets/projects/kis/kis_2.webp';
+  static const String KIS3 = 'assets/projects/kis/kis__3.webp';
+  static const String KIS4 = 'assets/projects/kis/kis__4.webp';
+  static const String KIS5 = 'assets/projects/kis/kis__5.webp';
+  static const String KIS6 = 'assets/projects/kis/kis__6.webp';
+  static const String KIS7 = 'assets/projects/kis/kis__7.webp';
+  static const String KIS8 = 'assets/projects/kis/kis__8.webp';
 
 
   static const String assetsDsc = 'assets/dsc.png';
@@ -38,6 +54,8 @@ class Assets {
   static const String projectsAndroid = 'assets/projects/android.png';
   static const String projectsBgAlyacm = 'assets/projects/bg_alyacm.png';
   static const String projectsBgiKIS = 'assets/projects/bg_ikis.jpg';
+  static const String projectsBgiKISI = 'assets/projects/bg_ikisi.jpg';
+  static const String projectsBgKIS = 'assets/projects/bg_kis.jpg';
 
   
   static const String projectsBgKasa = 'assets/projects/bg_kasa.jpeg';
@@ -47,6 +65,8 @@ class Assets {
   static const String projectsLogoAlyacm = 'assets/projects/logo_alyacm.png';
   static const String projectsLogoKasa = 'assets/projects/logo_kasa.png';
   static const String projectsLogoiKIS = 'assets/projects/logo_ikis.webp';
+  static const String projectsLogoiKISI = 'assets/projects/logo_ikisi.webp';
+  static const String projectsLogoKIS = 'assets/projects/logo_kis.webp';
   static const String resumeResume = 'assets/resume/resume.pdf';
   static const String servicesApi = 'assets/services/api.png';
   static const String servicesApp = 'assets/services/app.png';
