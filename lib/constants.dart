@@ -29,22 +29,34 @@ Future<void> _launchURL(BuildContext context, url) async {
   try {
     await launchUrl(
       Uri.parse(url),
-      customTabsOptions: CustomTabsOptions(
+      customTabsOptions: CustomTabsOptions.partial(
+        configuration: PartialCustomTabsConfiguration.adaptiveSheet(
+          initialHeight: mediaQuery.size.height * 0.7,
+          initialWidth: mediaQuery.size.width * 0.4,
+          activitySideSheetMaximizationEnabled: true,
+          activitySideSheetDecorationType:
+              CustomTabsActivitySideSheetDecorationType.shadow,
+          activitySideSheetRoundedCornersPosition:
+              CustomTabsActivitySideSheetRoundedCornersPosition.top,
+          cornerRadius: 16,
+        ),
         colorSchemes: CustomTabsColorSchemes.defaults(
-          toolbarColor: theme.primaryColor,
+          toolbarColor: theme.colorScheme.surface,
         ),
-        shareState: CustomTabsShareState.on,
-        urlBarHidingEnabled: true,
-        showTitle: true,
-        closeButton: CustomTabsCloseButton(
-          icon: CustomTabsCloseButtonIcons.back,
+      ),
+      safariVCOptions: SafariViewControllerOptions.pageSheet(
+        configuration: const SheetPresentationControllerConfiguration(
+          detents: {
+            SheetPresentationControllerDetent.large,
+            SheetPresentationControllerDetent.medium,
+          },
+          prefersScrollingExpandsWhenScrolledToEdge: true,
+          prefersGrabberVisible: true,
+          prefersEdgeAttachedInCompactHeight: true,
         ),
-        safariVCOptions: SafariViewControllerOptions(
-          preferredBarTintColor: theme.colorScheme.surface,
-          preferredControlTintColor: theme.colorScheme.onSurface,
-          barCollapsingEnabled: true,
-          dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,        
-        ),
+        preferredBarTintColor: theme.colorScheme.surface,
+        preferredControlTintColor: theme.colorScheme.onSurface,
+        dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
       ),
     );
   } catch (e) {
