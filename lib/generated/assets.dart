@@ -30,12 +30,12 @@ class Assets {
 
   static const String KIS1 = 'assets/projects/kis/kis_1.webp';
   static const String KIS2 = 'assets/projects/kis/kis_2.webp';
-  static const String KIS3 = 'assets/projects/kis/kis__3.webp';
-  static const String KIS4 = 'assets/projects/kis/kis__4.webp';
-  static const String KIS5 = 'assets/projects/kis/kis__5.webp';
-  static const String KIS6 = 'assets/projects/kis/kis__6.webp';
-  static const String KIS7 = 'assets/projects/kis/kis__7.webp';
-  static const String KIS8 = 'assets/projects/kis/kis__8.webp';
+  static const String KIS3 = 'assets/projects/kis/kis_3.webp';
+  static const String KIS4 = 'assets/projects/kis/kis_4.webp';
+  static const String KIS5 = 'assets/projects/kis/kis_5.webp';
+  static const String KIS6 = 'assets/projects/kis/kis_6.webp';
+  static const String KIS7 = 'assets/projects/kis/kis_7.webp';
+  static const String KIS8 = 'assets/projects/kis/kis_8.webp';
 
 
   static const String assetsDsc = 'assets/dsc.png';
