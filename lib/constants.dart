@@ -26,6 +26,7 @@ void launchURL(BuildContext context, String _url) async =>
 
 Future<void> _launchURL(BuildContext context, url) async {
   final theme = Theme.of(context);
+  final mediaQuery = MediaQuery.of(context);    
   try {
     await launchUrl(
       Uri.parse(url),
