@@ -8,15 +8,20 @@ class AboutMeMetaData extends StatelessWidget {
   final String information;
   final Alignment alignment;
 
-  const AboutMeMetaData({Key key, this.data, this.information, this.alignment})
-      : super(key: key);
+  const AboutMeMetaData({
+    Key? key,
+    required this.data,
+    required this.information,
+    this.alignment = Alignment.center, // Default value for alignment
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final _themeProvider = Provider.of<ThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
 
     return Align(
-      alignment: alignment ?? Alignment.center,
+      alignment: alignment,
       child: RichText(
         text: TextSpan(
           children: [

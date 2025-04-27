@@ -1,38 +1,40 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class Animator extends StatefulWidget {
   final Widget child;
   final Duration time;
 
-  Animator(this.child, this.time);
+  const Animator({Key? key, required this.child, required this.time}) : super(key: key);
 
   @override
   _AnimatorState createState() => _AnimatorState();
 }
 
-class _AnimatorState extends State<Animator>
-    with SingleTickerProviderStateMixin {
-  Timer timer;
-  AnimationController animationController;
-  Animation animation;
+class _AnimatorState extends State<Animator> with SingleTickerProviderStateMixin {
+  late Timer timer;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
-    animation =
-        CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
+    animationController = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+    animation = CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeInOut,
+    );
     timer = Timer(widget.time, animationController.forward);
   }
 
   @override
   void dispose() {
     animationController.dispose();
-    super.dispose();
     timer.cancel();
+    super.dispose();
   }
 
   @override
@@ -40,7 +42,7 @@ class _AnimatorState extends State<Animator>
     return AnimatedBuilder(
       animation: animation,
       child: widget.child,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Opacity(
           opacity: animation.value,
           child: Transform.translate(
@@ -53,26 +55,29 @@ class _AnimatorState extends State<Animator>
   }
 }
 
-Timer timer;
-Duration duration = Duration();
+// 글로벌 변수 관리
+Timer? _globalTimer;
+Duration _globalDuration = Duration();
 
-wait() {
-  if (timer == null || !timer.isActive) {
-    timer = Timer(Duration(microseconds: 120), () {
-      duration = Duration();
-    });
-  }
-  duration += Duration(milliseconds: 300);
-  return duration;
+Duration wait() {
+  _globalTimer?.cancel();
+  _globalTimer = Timer(const Duration(microseconds: 120), () {
+    _globalDuration = Duration();
+  });
+  _globalDuration += const Duration(milliseconds: 300);
+  return _globalDuration;
 }
 
 class WidgetAnimator extends StatelessWidget {
   final Widget child;
 
-  WidgetAnimator({this.child});
+  const WidgetAnimator({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Animator(child, wait());
+    return Animator(
+      child: child,
+      time: wait(),
+    );
   }
 }

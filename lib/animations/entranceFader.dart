@@ -7,34 +7,41 @@ class EntranceFader extends StatefulWidget {
   final Offset offset;
 
   const EntranceFader({
-    this.child,
+    Key? key,
+    required this.child,
     this.delay = const Duration(milliseconds: 0),
     this.duration = const Duration(milliseconds: 400),
     this.offset = const Offset(0.0, 32.0),
-  });
+  }) : super(key: key);
 
   @override
-  EntranceFaderState createState() {
-    return EntranceFaderState();
-  }
+  EntranceFaderState createState() => EntranceFaderState();
 }
 
 class EntranceFaderState extends State<EntranceFader>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation _dxAnimation;
-  Animation _dyAnimation;
+  late AnimationController _controller;
+  late Animation<double> _dxAnimation;
+  late Animation<double> _dyAnimation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: widget.duration);
-    _dxAnimation =
-        Tween(begin: widget.offset.dx, end: 0.0).animate(_controller);
-    _dyAnimation =
-        Tween(begin: widget.offset.dy, end: 0.0).animate(_controller);
+    _controller = AnimationController(
+      vsync: this,
+      duration: widget.duration,
+    );
+    _dxAnimation = Tween<double>(
+      begin: widget.offset.dx,
+      end: 0.0,
+    ).animate(_controller);
+    _dyAnimation = Tween<double>(
+      begin: widget.offset.dy,
+      end: 0.0,
+    ).animate(_controller);
+
     Future.delayed(widget.delay, () {
-      if (this.mounted) {
+      if (mounted) {
         _controller.forward();
       }
     });
@@ -54,9 +61,10 @@ class EntranceFaderState extends State<EntranceFader>
         opacity: _controller.value,
         child: Transform.translate(
           offset: Offset(_dxAnimation.value, _dyAnimation.value),
-          child: widget.child,
+          child: child,
         ),
       ),
+      child: widget.child,
     );
   }
 }
