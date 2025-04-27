@@ -26,6 +26,7 @@ class ServiceMobile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: ServiceCard(
                 cardWidth: width < 650 ? width * 0.8 : width * 0.5,
+                cardHeight: width < 650 ? height * 0.37 : height * 0.4,
                 serviceIcon: serviceSections[i].icon,
                 serviceTitle: serviceSections[i].title,
                 serviceDescription: serviceSections[i].description,

@@ -8,12 +8,10 @@ import 'package:universal_html/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'package:folio/constants.dart';
 import 'package:folio/widget/aboutMeMetaData.dart';
-import 'package:folio/widget/communityIconBtn.dart';
 import 'package:folio/widget/toolsTechWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AboutMobile extends StatelessWidget {
-  final _communityLogoHeight = [40.0, 50.0, 20.0];
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +73,7 @@ class AboutMobile extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: Colors.grey[900], width: 1.0),
+                bottom: BorderSide(color: Colors.grey[900] ?? Colors.grey, width: 1.0),
               ),
             ),
           ),
@@ -112,7 +110,7 @@ class AboutMobile extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: Colors.grey[900], width: 1.0),
+                bottom: BorderSide(color: Colors.grey[900] ?? Colors.grey, width: 1.0),
               ),
             ),
           ),
@@ -150,7 +148,7 @@ class AboutMobile extends StatelessWidget {
                   width: width * 0.2,
                   decoration: BoxDecoration(
                     border: Border(
-                      bottom: BorderSide(color: Colors.grey[900], width: 2.0),
+                      bottom: BorderSide(color: Colors.grey[900] ?? Colors.grey, width: 2.0),
                     ),
                   ),
                 ),

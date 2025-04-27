@@ -7,7 +7,7 @@ jobs:
   build_web:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up Flutter
         uses: subosito/flutter-action@v2.19.0
         with:
@@ -16,14 +16,14 @@ jobs:
         run: |
           flutter pub get
           dart pub global activate flutterfire_cli
-          flutter build web --base-href "/portfolio/" --web-renderer canvaskit --release
+          flutter build web --base-href "/portfolio/" --release
       - name: Deploy Web
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: ./build/web
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Archive Web
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: web-artifact
           path: ./build/web

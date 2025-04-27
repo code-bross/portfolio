@@ -4,13 +4,12 @@ import 'package:folio/constants.dart';
 import 'package:folio/provider/themeProvider.dart';
 import 'package:folio/widget/customTextHeading.dart';
 import 'package:folio/widget/projectCard.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ContactMobileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _themeProvider = Provider.of<ThemeProvider>(context);
+    Provider.of<ThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
@@ -26,6 +25,7 @@ class ContactMobileTab extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: ProjectCard(
                 cardWidth: width > 480 ? width * 0.5 : width * 0.8,
+                cardHeight: width < 480 ? height * 0.28 : height * 0.25,
                 projectIconData: kContactIcons[i],
                 projectModel: ProjectModel(kContactTitles[i],
                     kContactDetails[i], '', '', '','',[]),

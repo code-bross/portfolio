@@ -1,9 +1,7 @@
 import 'package:flip_card/flip_card.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/animations/bottomAnimation.dart';
 import 'package:folio/provider/themeProvider.dart';
-import 'package:folio/sections/serviceDetails/serviceDetails.dart';
 import 'package:folio/widget/adaptiveText.dart';
 import 'package:folio/widget/customBtn.dart';
 import 'package:folio/widget/customTextHeading.dart';
@@ -11,9 +9,7 @@ import 'package:folio/widget/serviceCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:folio/constants.dart';
-import 'package:mailto/mailto.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ServiceDesktop extends StatefulWidget {
   @override
@@ -102,11 +98,11 @@ class _ServiceDesktopState extends State<ServiceDesktop> {
 
 class ServiceCardBackWidget extends StatelessWidget {
   const ServiceCardBackWidget(
-      {Key key,
-      @required ThemeProvider themeProvider,
-      @required this.height,
-      @required this.width,
-      @required this.serviceSectionModel})
+      {Key? key,
+      required ThemeProvider themeProvider,
+      required this.height,
+      required this.width,
+      required this.serviceSectionModel})
       : _themeProvider = themeProvider,
         super(key: key);
 

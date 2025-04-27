@@ -278,6 +278,56 @@ class ServiceSectionModel {
 }
 
 var projects = [
+
+  ProjectModel(
+      '한국투자증권 MTS',
+      '한투 - 한국투자증권,주식,MTS,증권,주식어플,해외주식',
+      Assets.projectsLogoKIS,
+      'https://play.google.com/store/apps/details?id=com.truefriend.neosmartarenewal',
+      Assets.projectsBgKIS,
+      "주요업무 : 한국투자증권 MTS 국 앱 개편 및 유지보수\n> 국내 MTS 개편 및 유지보수\n> JUnit Test, Android Instrument UI Test 개발\n> Gitlab 기반의 CI/CD 작업 (Android)\n> sonarqube, sparrow, whitesource analyze, firebase distribution, gitlab release 등\n> FormDe 기반으로 화면이동 설계 \n> Room, Koin 기반으로한 MVI framework 설계\n> 홈 보유, 홈 카드 섹션등 개발",
+      [
+        Assets.KIS1,
+        Assets.KIS2,
+        Assets.KIS3,
+        Assets.KIS4,
+        Assets.KIS5,
+        Assets.KIS6,
+        Assets.KIS7,
+      ]),
+  ProjectModel(
+      'iKISI',
+      '한국투자증권 인도네시아 MTS - iKISI',
+      Assets.projectsLogoiKISI,
+      'https://play.google.com/store/apps/details?id=com.koreainvestment.indonesia',
+      Assets.projectsBgiKISI,
+      "주요업무 : 한국투자증권 MTS 인도네시아 앱 신규 개발 및 유지보수\n> 인도네시아 MTS 신규 플랫폼 개발 및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> GithubAction 기반의 CI/CD 작업 (Android)\n> sonarqube, firebase distribution, github release 등\n> Compose Navigation Component 기반으로 화면이동 설계 \n> Room, Hilt 기반으로한 MVI framework 설계\n> WatchList, 종목 상세 개발 \n> Firebase event tracking을 기반으로 한 User segment 분류",
+      [
+        Assets.iKISI1,
+        Assets.iKISI2,
+        Assets.iKISI3,
+        Assets.iKISI4,
+        Assets.iKISI5,
+        Assets.iKISI6,
+        Assets.iKISI7,
+        Assets.iKISI8,
+      ]),
+  ProjectModel(
+      'iKIS',
+      '한국투자증권 베트남 MTS - iKIS',
+      Assets.projectsLogoiKIS,
+      'https://play.google.com/store/apps/details?id=com.koreainvestment.vietnam',
+      Assets.projectsBgiKIS,
+      "주요업무 : 한국투자증권 MTS 베트남 앱 신규 개발 및 유지보수\n> 베트남 MTS 신규 플랫폼 개발 및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> GithubAction 기반의 CI/CD 작업 (Android)\n> sonarqube, firebase distribution, github release 등\n> Compose Navigation Component 기반으로 화면이동 설계 \n> Room, Hilt 기반으로한 MVI framework 설계\n> WatchList, 종목 상세 개발 \n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발",
+      [
+        Assets.iKIS1,
+        Assets.iKIS2,
+        Assets.iKIS3,
+        Assets.iKIS4,
+        Assets.iKIS5,
+        Assets.iKIS6,
+        Assets.iKIS7
+      ]),
   ProjectModel(
       'Kasa',
       '처음 만나는 건물재테크, 카사 - Kasa',
@@ -310,22 +360,6 @@ var projects = [
         Assets.alyacmAlyacm7,
         Assets.alyacmAlyacm8,
       ]),
-  ProjectModel(
-      'iKIS',
-      '한국투자증권 베트남 MTS - iKIS',
-      Assets.projectsLogoiKIS,
-      'https://play.google.com/store/apps/details?id=com.koreainvestment.vietnam',
-      Assets.projectsBgiKIS,
-      "주요업무 : 한국투자증권 MTS 베트남 앱 신규 개발 및 유지보수\n> 베트남 MTS 신규 플랫폼 개발 및 런칭\n> JUnit Test, Android Instrument UI Test 개발\n> GithubAction 기반의 CI/CD 작업 (Android)\n> sonarqube, firebase distribution, github release 등\n> Compose Navigation Component 기반으로 화면이동 설계 \n> Room, Hilt 기반으로한 MVI framework 설계\n> WatchList, 종목 상세 개발 \n> Firebase event tracking을 기반으로 한 User segment 분류\n> Firebase Inapp message custom 개발",
-      [
-        Assets.iKIS1,
-        Assets.iKIS2,
-        Assets.iKIS3,
-        Assets.iKIS4,
-        Assets.iKIS5,
-        Assets.iKIS6,
-        Assets.iKIS7,
-      ])
 ];
 
 class ProjectModel {
@@ -346,8 +380,8 @@ class SkillModel {
   final int percentage;
 
   SkillModel({
-    @required this.skill,
-    @required this.percentage,
+    required this.skill,
+    required this.percentage,
   });
 }
 

@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:folio/provider/themeProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/animations/entranceFader.dart';
 import 'package:folio/constants.dart';
@@ -23,18 +20,19 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
+
 extension GlobalKeyExtension on GlobalKey {
-  Rect get globalPaintBounds {
-    final renderObject = currentContext?.findRenderObject();
-    final translation = renderObject?.getTransformTo(null)?.getTranslation();
-    if (translation != null && renderObject?.paintBounds != null) {
-      final offset = Offset(translation.x, translation.y);
-      return renderObject?.paintBounds?.shift(offset);
-    } else {
-      return null;
-    }
+  Rect? get globalPaintBounds {
+    final renderObject = currentContext?.findRenderObject() as RenderBox?;
+    if (renderObject == null) return null;
+
+    final translation = renderObject.getTransformTo(null).getTranslation();
+
+    final offset = Offset(translation.x, translation.y);
+    return renderObject.paintBounds.shift(offset);
   }
 }
+
 
 class _MainPageState extends State<MainPage> {
   ThemeProvider _themeProviders = ThemeProvider();
@@ -118,7 +116,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   void initState() {
-    _scrollController = _themeProviders.scroll;
+    _scrollController = _themeProviders.scrollController;
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection ==
           ScrollDirection.reverse) {
@@ -159,13 +157,13 @@ class _MainPageState extends State<MainPage> {
               elevation: 0,
               backgroundColor: Colors.transparent,
               actions: [
-                NavBarLogo(),
+                NavBarLogo(height: 56.0,),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.05,
                 )
               ],
             )
-          : _appBarTabDesktop(_themeProv),
+          : _appBarTabDesktop(context, _themeProv),
       drawer: MediaQuery.of(context).size.width < 760
           ? _appBarMobile(_themeProv)
           : null,
@@ -237,73 +235,73 @@ class _MainPageState extends State<MainPage> {
             ),
           );
   }
-
-  Widget _appBarTabDesktop(ThemeProvider _themeProv) {
-    return AppBar(
-      elevation: 0.0,
-      backgroundColor: _themeProv.lightTheme ? Colors.white : Colors.black,
-      title: MediaQuery.of(context).size.width < 780
-          ? EntranceFader(
-              duration: Duration(milliseconds: 250),
-              offset: Offset(0, -10),
-              delay: Duration(seconds: 3),
-              child: NavBarLogo(
-                height: 20.0,
-              ))
-          : EntranceFader(
-              offset: Offset(0, -10),
-              duration: Duration(milliseconds: 250),
-              delay: Duration(milliseconds: 100),
-              child: NavBarLogo(
-                height: MediaQuery.of(context).size.height * 0.035,
-              ),
+PreferredSizeWidget _appBarTabDesktop(BuildContext context, ThemeProvider themeProvider) {
+  final size = MediaQuery.of(context).size;
+  
+  return AppBar(
+    elevation: 0.0,
+    backgroundColor: themeProvider.lightTheme ? Colors.white : Colors.black,
+    title: size.width < 780
+        ? EntranceFader(
+            duration: const Duration(milliseconds: 250),
+            offset: const Offset(0, -10),
+            delay: const Duration(seconds: 3),
+            child: NavBarLogo(height: 20.0),
+          )
+        : EntranceFader(
+            offset: const Offset(0, -10),
+            duration: const Duration(milliseconds: 250),
+            delay: const Duration(milliseconds: 100),
+            child: NavBarLogo(
+              height: size.height * 0.035,
             ),
-      actions: [
-        for (int i = 0; i < _sectionsName.length; i++)
-          _appBarActions(_sectionsName[i], i, _sectionsIcons[i], _themeProv),
-        EntranceFader(
-          offset: Offset(0, -10),
-          delay: Duration(milliseconds: 100),
-          duration: Duration(milliseconds: 250),
-          child: Container(
-            height: 60.0,
-            width: 120.0,
-            padding: const EdgeInsets.all(8.0),
-            child: MaterialButton(
-              hoverColor: kPrimaryColor.withAlpha(150),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                  side: BorderSide(color: kPrimaryColor)),
-              onPressed: () {
-                html.window.open(host.resumePath, "pdf");
-              },
-              child: Text(
-                "RESUME",
-                style: GoogleFonts.montserrat(
-                  color: _themeProv.lightTheme ? Colors.black : Colors.white,
-                  fontWeight: FontWeight.w300,
-                ),
+          ),
+    actions: [
+      for (int i = 0; i < _sectionsName.length; i++)
+        _appBarActions(_sectionsName[i], i, _sectionsIcons[i], themeProvider),
+      EntranceFader(
+        offset: const Offset(0, -10),
+        delay: const Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 250),
+        child: Container(
+          height: 60.0,
+          width: 120.0,
+          padding: const EdgeInsets.all(8.0),
+          child: MaterialButton(
+            hoverColor: kPrimaryColor.withAlpha(150),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+              side: const BorderSide(color: kPrimaryColor),
+            ),
+            onPressed: () {
+              html.window.open(host.resumePath, "pdf");
+            },
+            child: Text(
+              "RESUME",
+              style: GoogleFonts.montserrat(
+                color: themeProvider.lightTheme ? Colors.black : Colors.white,
+                fontWeight: FontWeight.w300,
               ),
             ),
           ),
         ),
-        const SizedBox(width: 15.0),
-        Flexible(
-          child: SizedBox(
-              height: 30.0,
-              child: Switch(
-                inactiveTrackColor: Colors.grey,
-                value: !_themeProv.lightTheme,
-                onChanged: (value) {
-                  _themeProv.lightTheme = !value;
-                },
-                activeColor: kPrimaryColor,
-              )),
+      ),
+      const SizedBox(width: 15.0),
+      SizedBox(
+        height: 30.0,
+        child: Switch(
+          inactiveTrackColor: Colors.grey,
+          value: !themeProvider.lightTheme,
+          onChanged: (value) {
+            themeProvider.lightTheme = !value;
+          },
+          activeColor: kPrimaryColor,
         ),
-        const SizedBox(width: 15.0),
-      ],
-    );
-  }
+      ),
+      const SizedBox(width: 15.0),
+    ],
+  );
+}
 
   Widget _appBarMobile(ThemeProvider theme) {
     return Drawer(
@@ -383,10 +381,10 @@ class SectionsBody extends StatelessWidget {
   final Widget Function(int) sectionWidget;
 
   const SectionsBody({
-    Key key,
-    this.scrollController,
-    this.sectionsLength,
-    this.sectionWidget,
+    Key? key,
+    required this.scrollController,
+    required this.sectionsLength,
+    required this.sectionWidget,
   }) : super(key: key);
 
   @override
