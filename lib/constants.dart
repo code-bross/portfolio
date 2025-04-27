@@ -27,27 +27,24 @@ void launchURL(BuildContext context, String _url) async =>
 Future<void> _launchURL(BuildContext context, url) async {
   final theme = Theme.of(context);
   try {
-    await launch(
-      url,
-      customTabsOption: CustomTabsOption(
-        toolbarColor: theme.primaryColor,
-        enableDefaultShare: true,
-        enableUrlBarHiding: true,
-        showPageTitle: true,
-        animation: CustomTabsSystemAnimation.slideIn(),
-        extraCustomTabs: const <String>[
-          // ref. https://play.google.com/store/apps/details?id=org.mozilla.firefox
-          'org.mozilla.firefox',
-          // ref. https://play.google.com/store/apps/details?id=com.microsoft.emmx
-          'com.microsoft.emmx',
-        ],
-      ),
-      safariVCOption: SafariViewControllerOption(
-        preferredBarTintColor: theme.primaryColor,
-        preferredControlTintColor: Colors.white,
-        barCollapsingEnabled: true,
-        entersReaderIfAvailable: false,
-        dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
+    await launchUrl(
+      Uri.parse(url),
+      customTabsOptions: CustomTabsOptions(
+        colorSchemes: CustomTabsColorSchemes.defaults(
+          toolbarColor: theme.primaryColor,
+        ),
+        shareState: CustomTabsShareState.on,
+        urlBarHidingEnabled: true,
+        showTitle: true,
+        closeButton: CustomTabsCloseButton(
+          icon: CustomTabsCloseButtonIcons.back,
+        ),
+        safariVCOptions: SafariViewControllerOptions(
+          preferredBarTintColor: theme.colorScheme.surface,
+          preferredControlTintColor: theme.colorScheme.onSurface,
+          barCollapsingEnabled: true,
+          dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,        
+        ),
       ),
     );
   } catch (e) {
