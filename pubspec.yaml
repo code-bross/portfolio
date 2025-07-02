@@ -41,6 +41,7 @@ dependencies:
   flutter_custom_tabs: ^2.0.0
   mailto: ^2.0.0
   flutter_image_compress: ^2.4.0
+  video_player_web: ^2.3.5
 
 dev_dependencies:
   flutter_test:
