@@ -137,21 +137,21 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: _themeProv.lightTheme ? Colors.white : Colors.black,
-      appBar: MediaQuery.of(context).size.width < 760
+      appBar: MediaQuery.of(context).size.width < 1100
           ? AppBar(
               iconTheme: IconThemeData(
                   color: _themeProv.lightTheme ? Colors.black : Colors.white),
               elevation: 0,
-              backgroundColor: Colors.transparent,
-              actions: [
-                NavBarLogo(height: 56.0,),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.05,
-                )
-              ],
+              backgroundColor:
+                  _themeProv.lightTheme ? Colors.white : Colors.black,
+              title: const Align(
+                alignment: Alignment.centerRight,
+                child: NavBarLogo(height: 26),
+              ),
+              titleSpacing: 20,
             )
           : _appBarTabDesktop(context, _themeProv),
-      drawer: MediaQuery.of(context).size.width < 760
+      drawer: MediaQuery.of(context).size.width < 1100
           ? _appBarMobile(_themeProv)
           : null,
       body: Stack(
@@ -178,7 +178,7 @@ class _MainPageState extends State<MainPage> {
 
   Widget _appBarActions(
       String childText, int index, IconData icon, ThemeProvider themeProvider) {
-    return MediaQuery.of(context).size.width > 760
+    return MediaQuery.of(context).size.width >= 1100
         ? EntranceFader(
             offset: Offset(0, -10),
             delay: Duration(milliseconds: 100),
@@ -240,7 +240,7 @@ PreferredSizeWidget _appBarTabDesktop(BuildContext context, ThemeProvider themeP
             duration: const Duration(milliseconds: 250),
             delay: const Duration(milliseconds: 100),
             child: NavBarLogo(
-              height: size.height * 0.035,
+              height: 28,
             ),
           ),
     actions: [

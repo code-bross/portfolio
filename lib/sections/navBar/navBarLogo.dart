@@ -7,43 +7,34 @@ import '../../constants.dart';
 class NavBarLogo extends StatelessWidget {
   final double height;
 
-  NavBarLogo({required this.height});
+  const NavBarLogo({Key? key, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final _themeProvider = Provider.of<ThemeProvider>(context);
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-          MediaQuery.of(context).size.width < 1100 ? 0.0 : 20.0, 20.0, 0, 0),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Flexible(
-              child: Text(
-            "< ",
-            style: TextStyle(
-              fontSize: height,
-              color: _themeProvider.lightTheme ? Colors.black : Colors.white,
-            ),
-          )),
-          Flexible(
-              child: Text(
-            host.nickName,
-            style: TextStyle(
-              fontFamily: "Agustina",
-              fontSize: height,
-              color: _themeProvider.lightTheme ? Colors.black : Colors.white,
-            ),
-          )),
-          Flexible(
-              child: Text(
-            MediaQuery.of(context).size.width >= 1000 ? " />\t\t" : " />",
-            style: TextStyle(
-              fontSize: height,
-              color: _themeProvider.lightTheme ? Colors.black : Colors.white,
-            ),
-          ))
-        ],
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4),
+        child: Text.rich(
+          TextSpan(
+            children: [
+              const TextSpan(text: "< "),
+              TextSpan(
+                text: host.nickName,
+                style: const TextStyle(fontFamily: "Agustina"),
+              ),
+              const TextSpan(text: " />"),
+            ],
+          ),
+          maxLines: 1,
+          softWrap: false,
+          style: TextStyle(
+            fontSize: height,
+            height: 1.4,
+            color: _themeProvider.lightTheme ? Colors.black : Colors.white,
+          ),
+        ),
       ),
     );
   }

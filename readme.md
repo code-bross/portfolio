@@ -10,6 +10,17 @@ The portfolio repository offers a readily available portfolio template built usi
 - Theming: Supports light and dark themes.
 - Responsiveness: Adapts to different screen sizes for optimal viewing.
 
+### Project showcase
+
+The Projects section uses a shared `ProjectShowcase` layout: a vertical list on
+phones and a two- or three-column collection on wider screens. Images and text
+are separated, and cards grow with their content instead of using viewport-height
+text sizing. Project taps still open the existing detail pages. The legacy card
+variant used by Contacts is unchanged.
+
+Navigation uses the drawer below 1100 logical pixels to leave enough room for the
+brand. The logo scales down as a single line inside the available toolbar space.
+
 ## Architecture
 The portfolio application follows a modular architecture, leveraging Flutter's widget-based structure. Here's a high-level overview of the core components:
 
