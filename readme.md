@@ -48,7 +48,7 @@ The application uses a routing mechanism to navigate between different sections,
 ## Usage Instructions
 Follow these steps to install, configure, and run the portfolio application:
 
- 1. Prerequisites: Ensure you have Flutter 2.0 or higher installed on your system.
+ 1. Prerequisites: Use Flutter 3.47.8 (Dart 3.13) to match CI and the committed dependency lockfile.
  2. Clone the Repository:
     ```bash
     git clone https://github.com/mhmzdev/DevFolio
@@ -56,7 +56,7 @@ Follow these steps to install, configure, and run the portfolio application:
     ```
  3. Install Dependencies:
     ```bash
-    flutter pub get
+    flutter pub get --enforce-lockfile
     ```
  4. Enable Web Support (if needed):
     ```bash
@@ -78,3 +78,9 @@ Follow these steps to install, configure, and run the portfolio application:
     7. Deployment:
         - Web: Use flutter build web to generate the web build, then deploy the contents of the build/web directory to a web server.
         - Android: Use flutter build apk or flutter build appbundle to generate the Android build, then deploy the APK or app bundle to the Google Play Store.
+
+CI pins Flutter 3.47.8 and resolves the committed `pubspec.lock` before running
+widget tests and building the web release. When changing dependencies, run
+`flutter pub get` with the same SDK and commit the updated lockfile.
+`font_awesome_flutter` 11 uses `FaIcon` rather than Flutter's `Icon` widget, and
+`google_fonts` 6.3.3 supports the newer `FontWeight` implementation.

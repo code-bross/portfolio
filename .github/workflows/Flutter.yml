@@ -12,11 +12,15 @@ jobs:
         uses: subosito/flutter-action@v2.19.0
         with:
           channel: 'stable'
+          flutter-version: '3.47.8'
       - name: Install dependencies
         run: |
-          flutter pub get
+          flutter pub get --enforce-lockfile
           dart pub global activate flutterfire_cli
-          flutter build web --base-href "/portfolio/" --release
+      - name: Test
+        run: flutter test --no-pub
+      - name: Build Web
+        run: flutter build web --no-pub --base-href "/portfolio/" --release
       - name: Deploy Web
         uses: peaceiris/actions-gh-pages@v4
         with:

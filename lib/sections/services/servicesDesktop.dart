@@ -170,7 +170,7 @@ class ServiceCardBackWidget extends StatelessWidget {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(FontAwesomeIcons.linkedin),
+                                FaIcon(FontAwesomeIcons.linkedin),
                                 const SizedBox(width: 8.0),
                                 Text("LinkedIn"),
                               ],
