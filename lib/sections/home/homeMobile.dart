@@ -32,7 +32,14 @@ class _HomeMobileState extends State<HomeMobile> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(width * 0.07, height * 0.12, 0, 0),
+            margin: EdgeInsets.fromLTRB(
+              width * 0.07,
+              MediaQuery.of(context).padding.top +
+                  kToolbarHeight +
+                  height * 0.035,
+              0,
+              0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -82,20 +89,23 @@ class _HomeMobileState extends State<HomeMobile> {
                       Icons.play_arrow_rounded,
                       color: kPrimaryColor,
                     ),
-                    AnimatedTextKit(
-                        isRepeatingAnimation: true,
-                        pause: Duration(milliseconds: 200),
-                        animatedTexts: host.positions
-                            .map((e) => TypewriterAnimatedText(
-                          e,
-                          textStyle: GoogleFonts.montserrat(
-                            fontSize: height * 0.03,
-                            fontWeight: FontWeight.w200,
-                            color: _themeProvider.lightTheme
-                                ? Colors.black
-                                : Colors.white,
-                          ),
-                        )).toList()),
+                    Expanded(
+                      child: AnimatedTextKit(
+                          isRepeatingAnimation: true,
+                          pause: Duration(milliseconds: 200),
+                          animatedTexts: host.positions
+                              .map((e) => TypewriterAnimatedText(
+                                    e,
+                                    textStyle: GoogleFonts.montserrat(
+                                      fontSize: height * 0.03,
+                                      fontWeight: FontWeight.w200,
+                                      color: _themeProvider.lightTheme
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
+                                  ))
+                              .toList()),
+                    ),
                   ],
                 ),
                 SizedBox(

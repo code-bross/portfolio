@@ -67,29 +67,16 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void _scroll(int i) {
-    double width = MediaQuery.of(context).size.width;
-    var isMobile = (width < 1200);
+    if (i < 0 || i >= _keys.length) return;
+    final targetContext = _keys[i].currentContext;
+    if (targetContext == null) return;
+    final size = MediaQuery.of(context).size;
+    final topInset = MediaQuery.of(context).padding.top + kToolbarHeight;
+    final alignment = (topInset / size.height).clamp(0.0, 0.5).toDouble();
 
-    var height = 0.0;
-    switch (i) {
-      case 0: //home
-        height = 0.0;
-        break;
-      case 1: //about
-        height = MediaQuery.of(context).size.height * 1.05;
-        break;
-      case 2: //development
-        height = MediaQuery.of(context).size.height * (isMobile ? 3.1 : 2.5);
-        break;
-      case 3: //project
-        height = MediaQuery.of(context).size.height * 3.56;
-        break;
-      case 4: //contact
-        height = MediaQuery.of(context).size.height * (isMobile ? 4.1 : 4.6);
-        break;
-    }
-    _scrollController.animateTo(
-      height,
+    Scrollable.ensureVisible(
+      targetContext,
+      alignment: alignment,
       duration: Duration(seconds: 1),
       curve: Curves.easeInOut,
     );
@@ -150,28 +137,28 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: _themeProv.lightTheme ? Colors.white : Colors.black,
-      appBar: MediaQuery.of(context).size.width < 760
+      appBar: MediaQuery.of(context).size.width < 1100
           ? AppBar(
               iconTheme: IconThemeData(
                   color: _themeProv.lightTheme ? Colors.black : Colors.white),
               elevation: 0,
-              backgroundColor: Colors.transparent,
-              actions: [
-                NavBarLogo(height: 56.0,),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.05,
-                )
-              ],
+              backgroundColor:
+                  _themeProv.lightTheme ? Colors.white : Colors.black,
+              title: const Align(
+                alignment: Alignment.centerRight,
+                child: NavBarLogo(height: 26),
+              ),
+              titleSpacing: 20,
             )
           : _appBarTabDesktop(context, _themeProv),
-      drawer: MediaQuery.of(context).size.width < 760
+      drawer: MediaQuery.of(context).size.width < 1100
           ? _appBarMobile(_themeProv)
           : null,
       body: Stack(
         children: [
           SectionsBody(
             scrollController: _scrollController,
-            sectionsLength: _sectionsIcons.length,
+            sectionsLength: _sectionsName.length + 1,
             sectionWidget: sectionWidget,
           ),
           _isScrollingDown
@@ -191,7 +178,7 @@ class _MainPageState extends State<MainPage> {
 
   Widget _appBarActions(
       String childText, int index, IconData icon, ThemeProvider themeProvider) {
-    return MediaQuery.of(context).size.width > 760
+    return MediaQuery.of(context).size.width >= 1100
         ? EntranceFader(
             offset: Offset(0, -10),
             delay: Duration(milliseconds: 100),
@@ -253,7 +240,7 @@ PreferredSizeWidget _appBarTabDesktop(BuildContext context, ThemeProvider themeP
             duration: const Duration(milliseconds: 250),
             delay: const Duration(milliseconds: 100),
             child: NavBarLogo(
-              height: size.height * 0.035,
+              height: 28,
             ),
           ),
     actions: [
@@ -309,8 +296,7 @@ PreferredSizeWidget _appBarTabDesktop(BuildContext context, ThemeProvider themeP
         color: theme.lightTheme ? Colors.white : Colors.grey[900],
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 25.0, 0, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               Center(
                 child: NavBarLogo(
@@ -389,15 +375,9 @@ class SectionsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: ListView.builder(
-        // physics: !kIsWeb ? ScrollPhysics() : NeverScrollableScrollPhysics(),
-        controller: scrollController,
-        itemCount: sectionsLength,
-        itemBuilder: (context, index) => sectionWidget(index),
-      ),
+    return ListView(
+      controller: scrollController,
+      children: List.generate(sectionsLength, sectionWidget),
     );
   }
 }

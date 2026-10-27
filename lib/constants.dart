@@ -26,27 +26,37 @@ void launchURL(BuildContext context, String _url) async =>
 
 Future<void> _launchURL(BuildContext context, url) async {
   final theme = Theme.of(context);
+  final mediaQuery = MediaQuery.of(context);    
   try {
-    await launch(
-      url,
-      customTabsOption: CustomTabsOption(
-        toolbarColor: theme.primaryColor,
-        enableDefaultShare: true,
-        enableUrlBarHiding: true,
-        showPageTitle: true,
-        animation: CustomTabsSystemAnimation.slideIn(),
-        extraCustomTabs: const <String>[
-          // ref. https://play.google.com/store/apps/details?id=org.mozilla.firefox
-          'org.mozilla.firefox',
-          // ref. https://play.google.com/store/apps/details?id=com.microsoft.emmx
-          'com.microsoft.emmx',
-        ],
+    await launchUrl(
+      Uri.parse(url),
+      customTabsOptions: CustomTabsOptions.partial(
+        configuration: PartialCustomTabsConfiguration.adaptiveSheet(
+          initialHeight: mediaQuery.size.height * 0.7,
+          initialWidth: mediaQuery.size.width * 0.4,
+          activitySideSheetMaximizationEnabled: true,
+          activitySideSheetDecorationType:
+              CustomTabsActivitySideSheetDecorationType.shadow,
+          activitySideSheetRoundedCornersPosition:
+              CustomTabsActivitySideSheetRoundedCornersPosition.top,
+          cornerRadius: 16,
+        ),
+        colorSchemes: CustomTabsColorSchemes.defaults(
+          toolbarColor: theme.colorScheme.surface,
+        ),
       ),
-      safariVCOption: SafariViewControllerOption(
-        preferredBarTintColor: theme.primaryColor,
-        preferredControlTintColor: Colors.white,
-        barCollapsingEnabled: true,
-        entersReaderIfAvailable: false,
+      safariVCOptions: SafariViewControllerOptions.pageSheet(
+        configuration: const SheetPresentationControllerConfiguration(
+          detents: {
+            SheetPresentationControllerDetent.large,
+            SheetPresentationControllerDetent.medium,
+          },
+          prefersScrollingExpandsWhenScrolledToEdge: true,
+          prefersGrabberVisible: true,
+          prefersEdgeAttachedInCompactHeight: true,
+        ),
+        preferredBarTintColor: theme.colorScheme.surface,
+        preferredControlTintColor: theme.colorScheme.onSurface,
         dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
       ),
     );

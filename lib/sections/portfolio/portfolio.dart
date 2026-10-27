@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:folio/sections/portfolio/portfolioDesktop.dart';
-import 'package:folio/sections/portfolio/portfolioMobile.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+import 'package:folio/sections/portfolio/projectShowcase.dart';
 
 class Portfolio extends StatelessWidget {
   Portfolio(GlobalKey key) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: PortfolioMobileTab(),
-      tablet: PortfolioMobileTab(),
-      desktop: PortfolioDesktop(),
-    );
+    return const ProjectShowcase();
   }
 }
