@@ -12,11 +12,14 @@ class CustomSectionHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _themeProvider = Provider.of<ThemeProvider>(context);
+    final width = MediaQuery.of(context).size.width;
     return AdaptiveText(
       text,
       textAlign: TextAlign.start,
       style: GoogleFonts.montserrat(
-        fontSize: MediaQuery.of(context).size.height * 0.075,
+        fontSize: width < 600
+            ? 32.0
+            : MediaQuery.of(context).size.height * 0.075,
         fontWeight: FontWeight.w100,
         letterSpacing: 1.0,
         color: _themeProvider.lightTheme ? Colors.black : Colors.white,

@@ -138,8 +138,8 @@ class _ProjectCardState extends State<ProjectCard> {
                       letterSpacing: 1.5,
                       fontWeight: FontWeight.w400,
                       color: _themeProvider.lightTheme
-                          ? Colors.white
-                          : Colors.grey[900],
+                          ? Colors.black
+                          : Colors.white,
                     ),
                   ),
                 SizedBox(height: height * 0.01),
@@ -162,7 +162,7 @@ class _ProjectCardState extends State<ProjectCard> {
             ),
             AnimatedOpacity(
               duration: Duration(milliseconds: 400),
-              opacity: isHover ? 0.0 : 1.0,
+              opacity: width < 760 ? 0.18 : (isHover ? 0.0 : 1.0),
               child: FittedBox(
                 fit: BoxFit.fill,
                 child: widget.projectModel.backgroundImage.isNotEmpty

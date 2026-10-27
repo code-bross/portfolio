@@ -67,29 +67,16 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void _scroll(int i) {
-    double width = MediaQuery.of(context).size.width;
-    var isMobile = (width < 1200);
+    if (i < 0 || i >= _keys.length) return;
+    final targetContext = _keys[i].currentContext;
+    if (targetContext == null) return;
+    final size = MediaQuery.of(context).size;
+    final topInset = MediaQuery.of(context).padding.top + kToolbarHeight;
+    final alignment = (topInset / size.height).clamp(0.0, 0.5).toDouble();
 
-    var height = 0.0;
-    switch (i) {
-      case 0: //home
-        height = 0.0;
-        break;
-      case 1: //about
-        height = MediaQuery.of(context).size.height * 1.05;
-        break;
-      case 2: //development
-        height = MediaQuery.of(context).size.height * (isMobile ? 3.1 : 2.5);
-        break;
-      case 3: //project
-        height = MediaQuery.of(context).size.height * 3.56;
-        break;
-      case 4: //contact
-        height = MediaQuery.of(context).size.height * (isMobile ? 4.1 : 4.6);
-        break;
-    }
-    _scrollController.animateTo(
-      height,
+    Scrollable.ensureVisible(
+      targetContext,
+      alignment: alignment,
       duration: Duration(seconds: 1),
       curve: Curves.easeInOut,
     );
@@ -171,7 +158,7 @@ class _MainPageState extends State<MainPage> {
         children: [
           SectionsBody(
             scrollController: _scrollController,
-            sectionsLength: _sectionsIcons.length,
+            sectionsLength: _sectionsName.length + 1,
             sectionWidget: sectionWidget,
           ),
           _isScrollingDown
@@ -309,8 +296,7 @@ PreferredSizeWidget _appBarTabDesktop(BuildContext context, ThemeProvider themeP
         color: theme.lightTheme ? Colors.white : Colors.grey[900],
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 25.0, 0, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               Center(
                 child: NavBarLogo(
@@ -389,15 +375,9 @@ class SectionsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: ListView.builder(
-        // physics: !kIsWeb ? ScrollPhysics() : NeverScrollableScrollPhysics(),
-        controller: scrollController,
-        itemCount: sectionsLength,
-        itemBuilder: (context, index) => sectionWidget(index),
-      ),
+    return ListView(
+      controller: scrollController,
+      children: List.generate(sectionsLength, sectionWidget),
     );
   }
 }

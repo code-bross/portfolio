@@ -60,7 +60,7 @@ class AboutMobile extends StatelessWidget {
             height: height * 0.02,
           ),
           Text(
-            "",
+            host.aboutMeDescription,
             style: GoogleFonts.montserrat(
               fontSize: height * 0.018,
               color: Colors.grey[500],
@@ -88,20 +88,11 @@ class AboutMobile extends StatelessWidget {
                   color: kPrimaryColor, fontSize: height * 0.015),
             ),
           ),
-          Row(
+          Wrap(
+            alignment: WrapAlignment.start,
             children: [
-              for (int i = 0; i < 4; i++)
-                ToolTechWidget(
-                  techName: kTools[i],
-                ),
-            ],
-          ),
-          Row(
-            children: [
-              for (int i = 4; i < kTools.length; i++)
-                ToolTechWidget(
-                  techName: kTools[i],
-                ),
+              for (final tool in kTools)
+                ToolTechWidget(techName: tool),
             ],
           ),
           SizedBox(
